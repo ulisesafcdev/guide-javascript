@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Var vs let</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#var-vs-let</h1>
+        <p class="header__text">
+            Es la forma en como definimos datos en nuestro programa, una variable es un nombre con un dato almacenado,
+            desde un nombre, un numero, un arreglo, un objeto.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <!-- <div class="container__title">
+                <h2>Teoria</h2>
+            </div> -->
+            <p class="container__text">
+                Antes de explicar como funciona var y let, debemos entender que es ambito de una variable, pues simplemente es la zona en donde definimos las variables que utilizaremos en nuestro programa, pueden ser variables globales y de bloque o conocida tambien como variable local. Una variable de bloque o variable local es aquella que se encuentra dentro de un bloque de codigo, osea, una funcion, una estructura repetitiva, una estructura condicional. En cambio, una variable global se encuentra fuera de cualquier bloque de codigo.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>#var</h2>
+            </div>
+            <p class="container__text">
+                Cuando definimos una variable con var, le estamos diciendo al navegador o al programa que estamos definiendo una variable de alcanze global. En javascript el objeto global es window (en el navegador), es decir, al definir una variable con var lo estamos haciendo en su objeto window, globalmente. Para demostrarlo, veamos el siguiente codigo:
+            </p>
+
+            <pre>
+                <code>console.log(window)</code>
+            </pre>
+
+            <p class="container__text">
+                Esto nos proporciona una pequenia referencia a todos los metodos, propiedades y eventos disponibles del objeto window.
+            </p>
+
+            <img src="../assets/img/var-1.png" alt="objeto window">
+
+            <p class="container__text">
+                Definamos una variable con var, y luego veamos el objeto window:
+            </p>
+
+            <pre>
+                <code>
+var ulisesafc = "soy una variable global"
+console.log(window)</code>
+            </pre>
+
+            <p class="container__text">
+                Al ver todos los metodos, propiedades y eventos del objeto window podemos observar la variable que hemos definido llamada 'ulisesafc', a esto se refiere cuando definimos una variable de manera global, entonces, al definirla con var, lo estamos definiendo en el objeto global de javascript.
+            </p>
+
+            <img src="../assets/img/var-2.png" alt="objeto window 2">
+            
+            <p class="container__text">
+                Y al definirla globalmente podemos llamar a esa variable con el objeto window:
+            </p>
+
+            <pre>
+                <code>
+var ulisesafc = "soy una variable global"
+console.log(window)
+                    
+console.log(window.ulisesafc)</code>
+            </pre>
+
+            <p class="container__text">
+                Como resultado vemos el valor de esa variable que habiamos definido globalmente. Es asi como se define var, en el navegador se define en su objeto global llamado window, en el servidor se define en su objeto global llamado global (valga la redundancia).
+            </p>
+
+            <img src="../assets/img/var-3.png" alt="objeto window 3">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>#let</h2>
+            </div>
+
+            <p class="container__text">
+                Al usar la palabra let para definir una variable permite que exista solamente en el bloque donde esta siendo definida. Para ver como se comporta let a diferencia de var, veamos el siguiente codigo de ejemplo:
+            </p>
+
+            <pre>
+                <code>
+let odiseodev = "soy una variable de bloque"
+console.log(odiseodev)                    
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Nos muestra su valor en consola.
+            </p>
+
+            <img src="../assets/img/let-1.png" alt="ejemplo let 1">
+
+            <p class="container__text">
+                A diferencia de var, con let solo lo definimos en el bloque donde esta siendo declarado su valor, no se aloja en otro ambito que no sea en donde esta siendo definido. Al ser definido con let, evitamos que se tenga acceso a esta variable en otro ambito que no sea en donde se este utilizando, asi se evitan conflictos con los valores de cada variable.
+            </p>
+
+            <p class="container__text">
+                Javascript funciona en el navegador y en el servidor (con Node.js), en ambos es recomendable usar let al definir variables que vamos usando, porque su alcanze es de bloque o localmente como se suele conocer y no se definen en los objetos globales de javascript como es el caso del navegador (window) y en el caso del servidor (global).
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- <script src="../js/var.js"></script> -->
+    <script src="../js/let.js"></script>
+
+</body>
+
+</html>
