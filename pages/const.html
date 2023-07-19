@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Constantes</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#constantes</h1>
+        <p class="header__text">
+            Una constante es una variable con un valor definido que no se puede redeclarar.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <p class="container__text">
+                Las variables constantes presentan un ambito de bloque tal y como lo hacen las variables definidas usando la instruccion let, con la diferencia que el valor de una constante no puede cambiarse a travez de la reasignacion. Las constantes no se pueden redeclarar. Veamos como se declara una constante:
+            </p>
+
+            <pre>
+                <code>
+const PI = 3.1416
+console.log(PI)
+                </code>
+            </pre>
+            
+            <p class="container__text">
+                Nos muestra el valor por consola.
+            </p>
+
+            <img src="../assets/img/const-1.png" alt="como se declara una constante">
+
+            <p class="container__text">
+                Las constantes por convencion se definen en mayusculas para distincion de las demas variables que no son una constante. Es necesario inicializar el valor de una constante, de lo contrario nos marcaria un error. La declaracion de una constante crea una referencia de solo lectura, por lo tanto no puede ser reasignado su valor, en el caso de que la asignacion sea a un objeto, este si puede ser alterado.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/constantes.js"></script>
+
+</body>
+
+</html>
