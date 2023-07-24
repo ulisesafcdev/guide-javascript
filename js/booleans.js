@@ -1,0 +1,25 @@
+/* let sinParametro = new Boolean()
+let conUnZero = new Boolean(0)
+let conValorNull = new Boolean(null)
+let conCadenaVacia = new Boolean("")
+let conValorFalse = new Boolean(false)
+
+console.log(sinParametro.valueOf())
+console.log(conUnZero.valueOf())
+console.log(conValorNull.valueOf())
+console.log(conCadenaVacia.valueOf())
+console.log(conValorFalse.valueOf()) */
+
+let conValorTrue = new Boolean(true)
+let conValorTrueString = new Boolean("true")
+let conValorFalseString = new Boolean("false")
+let conValorStringCualquiera = new Boolean("hola mundo")
+let conValorArray = new Boolean([])
+let conValorObject = new Boolean({})
+
+console.log(conValorTrue.valueOf())
+console.log(conValorTrueString.valueOf())
+console.log(conValorFalseString.valueOf())
+console.log(conValorStringCualquiera.valueOf())
+console.log(conValorArray.valueOf())
+console.log(conValorObject.valueOf())
