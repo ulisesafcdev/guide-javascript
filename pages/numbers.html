@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Numbers</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#numbers</h1>
+        <p class="header__text">
+            Es un objeto primitivo que nos permite representar y manipular valores numericos.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <p class="container__text">
+                El constructor Number contiene constantes y metodos para trabajar con numeros. Valores de otro tipo pueden ser convertidos a numeros usando la funcion Number()
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Crear valores numericos</h2>
+            </div>
+
+            <p class="container__text">
+                Veamos como podemos crear valores numericos en javascript:
+            </p>
+
+            <pre>
+                <code>
+let edad = 24
+let edadII = new Number(23)
+let edadIII = Number(50)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Podemos definir valores numericos directamente a una variable con el valor numerico, o usando el contructor Number, o la funcion Number. Al definir con el constructor Number, este nos devuelve un objeto, ya que ha sido creado con el prototype del constructor Number. A diferencia de las otras dos formas, no son instancias del objeto Number, por lo tanto no fueron creadas con el prototype del constructor Number. <br><br> Veamos que nos devuelve al usar la instruccion - instanceof - para verificar si tienen el prototype Number.
+            </p>
+
+            <pre>
+                <code>
+console.log(edad instanceof Number)
+console.log(edadII instanceof Number)
+console.log(edadIII instanceof Number)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Nos muestra en consola lo siguiente:
+            </p>
+
+            <img src="../assets/img/number-1.png" alt="ejemplo number instanceof">
+
+            <p class="container__text">
+                Nos devuelve true el unico valor que definimos con el constructor Number - edadII - los otros nos devuelve falso porque no han sido creado por el constructor, sin embargo, son number, la unica diferencia es que no tienen la propiedad - prototype: Number -. <br><br> Ahora veamos que nos devuelve cuando usamos la instruccion - typeof -.
+            </p>
+
+            <pre>
+                <code>
+console.log(typeof edad)
+console.log(typeof edadII)
+console.log(typeof edadIII)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Nos muestra lo siguiente en consola:
+            </p>
+
+            <img src="../assets/img/number-2.png" alt="ejemplo number typeof">
+
+            <p class="container__text">
+                Al igual que el ejemplo anterior el valor - edadII - nos devuelve un - object - osea que el tipo de dato es un objeto en si, se debe a que al definirlo con el constructor Number es un objeto el que estamos creando. Sigue siendo un Number ya que ha sido creado con el constructor, lo diferente es que tiene en sus propidades el - prototype: Number -. Los demas valores devuelven como resultado - number -, su tipo de dato.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/numbers.js"></script>
+    
+</body>
+</html>
