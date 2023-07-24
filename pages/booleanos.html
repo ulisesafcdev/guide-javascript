@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Booleans</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#booleans</h1>
+        <p class="header__text">
+            Es un objeto que almacena valores booleanos, sus valores son: true & false.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <p class="container__text">
+                El objeto tiene un valor inicial de false. Si el valor se omite, o es un cero (0) o (-0), null, false, NaN, undefined, o una cadena vacia, tambien su valor sera false.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Creacion de objetos Boolean con valor inicial false</h2>
+            </div>
+
+            <p class="container__text">
+                Los valores booleanos se conforman por dos valores: true & false. Veamos como podemos crear un objeto Boolean con el valor inicial de false:
+            </p>
+
+            <pre>
+                <code>
+let sinParametro = new Boolean()
+let conUnZero = new Boolean(0)
+let conValorNull = new Boolean(null)
+let conCadenaVacia = new Boolean("")
+let conValorFalse = new Boolean(false)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para saber el valor de un booleano cuando lo definimos con el constructor, usamos la notacion del punto usando la funcion - valueOf() -. Veamos el ejemplo:
+            </p>
+
+            <pre>
+                <code>
+console.log(sinParametro.valueOf())
+console.log(conUnZero.valueOf())
+console.log(conValorNull.valueOf())
+console.log(conCadenaVacia.valueOf())
+console.log(conValorFalse.valueOf())
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Veamos el resultado en la consola del navegador:
+            </p>
+
+            <img src="../assets/img/boolean-1.png" alt="ejemplo boolean valor inicial false">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Creacion de objetos Boolean con valor inicial true</h2>
+            </div>
+
+            <p class="container__text">
+                Veamos como podemos crear objetos Boolean con el valor inicial de true:
+            </p>
+
+            <pre>
+                <code>
+let conValorTrue = new Boolean(true)
+let conValorTrueString = new Boolean("true")
+let conValorFalseString = new Boolean("false")
+let conValorStringCualquiera = new Boolean("hola mundo")
+let conValorArray = new Boolean([])
+let conValorObject = new Boolean({})
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para saber el valor de un booleano cuando lo definimos con el constructor, usamos la notacion del punto usando la funcion - valueOf() -. Veamos el ejemplo:
+            </p>
+
+            <pre>
+                <code>
+console.log(conValorTrue.valueOf())
+console.log(conValorTrueString.valueOf())
+console.log(conValorFalseString.valueOf())
+console.log(conValorStringCualquiera.valueOf())
+console.log(conValorArray.valueOf())
+console.log(conValorObject.valueOf())
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Veamos el resultado en la consola del navegador:
+            </p>
+
+            <img src="../assets/img/boolean-2.png" alt="ejemplo boolean valor inicial true">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h3>Conclusion</h3>
+            </div>
+
+            <p class="container__text">
+                Un objeto booleano, siempre sus valores seran true o false. Segun los ejemplos de arriba, una cadena de texto siempre sera true aunque en su texto lleve la palabra false. Independientemente de cualquier nombre que tenga en la cadena de texto su valor sera true. Para definir o true o false, debemos indicar el valor sin comillas con true o false.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/booleans.js"></script>
+    
+</body>
+</html>
