@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Undefined, Null, NaN</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#undefined #null #NaN</h1>
+        <p class="header__text">
+            Son datos primitivos de javascript, veremos las diferencias de cada uno y como se comportan.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <div class="container__title">
+                <h2>#undefined</h2>
+            </div>
+
+            <p class="container__text">
+                Es una variable a la que no se le ha asignado un valor. Un metodo o sentencia tambien devuelve undefined si la variable que se esta evaluando no tiene asignado un valor. Veamos un ejemplo:
+            </p>
+
+            <pre>
+                <code>
+let nombreCompleto
+console.log(nombreCompleto)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Nos muestra en consola lo siguiente:
+            </p>
+
+            <img src="../assets/img/undefined-1.png" alt="captura ejemplo undefined">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>#null</h2>
+            </div>
+
+            <p class="container__text">
+                Representa un valor intencionalmente definida por el programador como nulo o vacio. Veamos un ejemplo:
+            </p>
+
+            <pre>
+                <code>
+let estadoCivil = null
+console.log(estadoCivil)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Nos muestra en consola lo siguiente:
+            </p>
+
+            <img src="../assets/img/null-1.png" alt="captura ejemplo valor null">
+
+            <p class="container__text">
+                La diferencia entre - undefined - & - null - es, la primera, su valor no ha sido definido ni por el lenguaje ni por el programador, por lo tanto, javascript devuelve que es un valor indefinido, la segunda, el valor a sido intencionalmente definido como nulo por el programador.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>#NaN</h2>
+            </div>
+
+            <p class="container__text">
+                Es un valor que representa = Not a Number -. Nos devolvera NaN cuando estemos realizando alguna operacion de un numero con otro tipo de dato. Veamos un ejemplo:
+            </p>
+
+            <pre>
+                <code>
+let nombre = "odiseo"
+let resultado = nombre * 100
+
+console.log(resultado)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Nos muestra en consola lo siguiente:
+            </p>
+
+            <img src="../assets/img/NaN-1.png" alt="captura ejemplo not a number">
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/undefinednullnan.js"></script>
+    
+</body>
+</html>
