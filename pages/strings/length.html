@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <title>length</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">.length</h1>
+        <p class="header__text">
+            La propiedad .length representa la longitud de una cadena de texto. Tomar en cuenta que lenght es una propiedad mas no un metodo, por lo tanto, se accede con la notacion del punto (.) y exceptuando los parentesis.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <p class="container__text">
+                Esta propiedad devuelve el numero de caracteres de una cadena. Para una cadena vacia, length es 0.<br><br>Veamos unos ejemplos:
+            </p>
+
+            <pre>
+                <code>
+let nombre = "ulisesafcdev"
+let x = ""
+
+console.log(nombre.length)
+console.log(x.length)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Definimos dos variables, una de ellas contiene un nombre y la otra es una cadena vacia, veamos que nos imprime en el navegador cuando accedemos a la propiedad length.
+            </p>
+
+            <img src="../../assets/img/string-length-1.png" alt="propiedad length resultado">
+        </section>
+
+        <section class="container">
+            <a href="../../index.html" class="container__link">Volver a inicio</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/strings/length.js"></script>
+    
+</body>
+</html>
