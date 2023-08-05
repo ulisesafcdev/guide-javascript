@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <title>concat</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">.concat()</h1>
+        <p class="header__text">
+            El metodo .concat() combina dos o mas cadenas de texto y devuelve una cadena de texto nueva.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <p class="container__text">
+                La funcion .concat() concatena los argumentos de tipo texto con la cadena sobre la que hace la llamada a la funcion y devuelve una nueva cadena de texto. Los cambios en la cadena original o la cadena devuelta no afectan al otro. Si los argumentos no son de tipo texto, estos son convertidos a texto antes de concatenarlos. <br><br> Veamos un ejemplo:
+            </p>
+            
+            <pre>
+                <code>
+let saludo = "Buen@s dias/tardes/noche"
+let usuario = "ulisesafcdev"
+
+console.log(saludo.concat(" ", usuario))
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Definimos dos variables con dos valores, usaremos el metodo .concat() para imprimir un mensaje. Y veamos que nos imprime en consola.
+            </p>
+
+            <img src="../../assets/img/concat-string-1.png" alt="captura resultado concat">
+
+            <p class="container__text">
+                Con respecto al rendimiento en cuanto usar el metodo .concat(), es altamente recomendado que se utilicen operadores de asignacion como (+, +=) o (`${}`)
+            </p>
+
+        </section>
+
+        <section class="container">
+            <a href="../../index.html" class="container__link">Volver a inicio</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/strings/concat.js"></script>
+    
+</body>
+</html>
