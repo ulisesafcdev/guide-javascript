@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Funciones</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#funciones</h1>
+        <p class="header__text">
+            Una funcion es un subprograma que puede ser llamado por codigo externo o interno a la funcion. Una funcion se compone de una secuencia de declaraciones, que conforman el llamado cuerpo de la funcion. Se pueden pasar valores a una funcion, y la funcion puede devolver un valor.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            
+            <div class="container__title">
+                <h2>Definiendo una funcion</h2>
+            </div>
+            
+            <p class="container__text">
+                Toda funcion en JavaScript es un objeto <i>Function</i>. Las funciones no son lo mismo que los procedimientos. Una funcion siempre devuelve un valor, pero un procedimiento, puede o no puede devolver un valor. <br><br>Veamos como se define una funcion:
+            </p>
+
+            <pre>
+                <code>
+function saludo() {
+    console.log(`Hola mundo, teoria y practica JavaScript`)
+}
+
+saludo()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Hemos definido una funcion llamada <i>saludo</i>, dentro tiene una instruccion que imprime un mensaje por consola. Para invocar este metodo se coloca el nombre de la funcion seguido de parentesis. Veamos el resultado:
+            </p>
+
+            <img src="../assets/img/funciones-1.png" alt="definiendo funcion primera forma basica">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Definiendo una funcion con valor de retorno</h2>
+            </div>
+
+            <p class="container__text">
+                Para devolver un valor especifico  distinto del predeterminado, una funcion debe tener una sentencia <i>return</i>, que especifique el valor a devolver. Una funcion sin una instruccion <i>return</i> devolvera el valor predeterminado, asi como en el ejemplo anterior. <br><br>Veamos como se define una funcion con valor de retorno:
+            </p>
+
+            <pre>
+                <code>
+function operacion() {
+    return 2 + 2
+}
+
+let resultado = operacion()
+console.log(resultado)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Definimos una funcion llamada <i>operacion</i> que nos devuelve una suma con la instruccion <i>return</i>, la funcion nos devuelve un resultado de una suma, por lo tanto ese resultado lo guardamos en una variable llamada resultado y luego la mostramos por consola, y veamos que nos imprime en la consola del navegador:
+            </p>
+
+            <img src="../assets/img/funciones-return-2.png" alt="definiendo funcion con return">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Definiendo una funcion con parametros</h2>
+            </div>
+
+            <p class="container__text">
+                Los parametros en la llamada a una funcion son los argumentos de la funcion. Los argumentos se pasan a las funciones por valor. <br><br>Veamos como se define una funcion con parametros:
+            </p>
+
+            <pre>
+                <code>
+function lenguaje(nombreLenguaje) {
+    console.log(`Guia de ${nombreLenguaje} - teoria y practica`)
+}
+
+lenguaje("JavaScript")
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Hemos definido una funcion que recibe un parametro llamado <i>nombreLenguaje</i>, dentro de esta funcion hay una instrucion que nos imprime un mensaje y se concatena el valor del parametro con la oracion para mostrar el mensaje en consola. Veamos cual es el resultado:
+            </p>
+
+            <img src="../assets/img/funciones-param-3.png" alt="definiendo una funcion con parametros">
+
+            <p class="container__text">
+                Podemos observar que nos muestra un mensaje con el valor que le pasamos a la funcion. En este caso, el valor que le pasamos fue <i>JavaScript</i>. Pero que pasaria si no le pasamos un valor? Veamos que sucede:
+            </p>
+
+            <img src="../assets/img/funciones-param-4.png" alt="resultado funcion sin valor en parametro">
+
+            <p class="container__text">
+                El resultado que nos muestra es <i>undefined</i> ya que no hay un valor definido ni por el programa ni por el usuario. Para evitar esto hay varias formas, una de ellas es definir un valor al parametro, y asi evitar en caso de que el usuario no ponga ningun valor como parametro a la llamada de la funcion. O la otra solucion es, mediante la estrucutura condicional <i>if-else</i> evaluar cuando el usuario no defina un valor y mostrarle un mensaje de advertencia indicando que no ha definido ningun valor. <br><br>Veamos la primera solucion:
+            </p>
+
+            <pre>
+                <code>
+function lenguaje(nombreLenguaje = "JavaScript") {
+    console.log(`Guia de ${nombreLenguaje} - teoria y practica`)
+}
+
+lenguaje()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Le definimos un valor predeterminado en caso de que al llamar la funcion no se le escriba un valor al parametro. Ya cuando el usuario defina un valor al parametro, este se reemplazara. Veamos el resultado en consola:
+            </p>
+
+            <img src="../assets/img/funciones-param-5.png" alt="definiendo funcion con parametro con valor predeterminado">
+
+            <p class="container__text">
+                Veamos la segunda solucion:
+            </p>
+
+            <pre>
+                <code>
+function lenguaje(nombreLenguaje) {
+    if (typeof nombreLenguaje == "undefined") return console.warn("No has definido un valor como parametro.")
+    if (nombreLenguaje === "") return console.warn("Haz indicado un valor vacio.");
+    if (typeof nombreLenguaje !== "string") return console.warn("Debes indicar como valor una cadena de texto.");
+    console.log(`Guia de ${nombreLenguaje} - teoria y practica`)
+}
+
+lenguaje()
+lenguaje("")
+lenguaje(1234)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En esta segunda solucion, evaluamos todos los casos (creo) que pueden suceder. Por ejemplo, evaluamos cuando solo se llame la funcion y no se defina ningun valor, evaluamos si el usuario dejo como campo vacio el valor del parametro, y finalmente evaluamos si el usuario indica cualquier valor que no sea una cadena de texto, mostrandole al usuario una advertencia de lo que esta sucediendo. Veamos el resultado en consola:
+            </p>
+
+            <img src="../assets/img/funciones-param-6.png" alt="definiendo funcion con parametro con soluciones a errores que el usuario pueda cometer">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Definiendo una funcion con parametros y valor de retorno</h2>
+            </div>
+
+            <p class="container__text">
+                Este es un ejemplo de como podemos crear funciones que lleven parametros y retornen valores, las dos combinados, y a la vez nos sirve como ejemplo de como validar diferentes casos cuando el usuario interactue con nuestro programa.
+            </p>
+
+            <pre>
+                <code>
+function calculoEdad(edadUsuario) {
+
+    if (typeof edadUsuario == "undefined") return console.warn("No haz definido un valor como parametro a evaluar.");
+    if (edadUsuario == 0) return console.warn("Ingresa un valor mayor a cero.");
+    if (typeof edadUsuario !== "number") return console.warn("Debes indicar como valor un numero.");
+
+    if (edadUsuario < 0) return console.warn("Ingresa un numero mayor a cero.");
+    if (edadUsuario > 0 && edadUsuario < 18) return console.info("Aun eres menor de edad.");
+    if (edadUsuario >= 18 && edadUsuario < 60) return console.info("Eres mayor de edad.");
+    if (edadUsuario >= 60) return console.info("Eres un adulto mayor de la tercera edad.");
+
+}
+
+calculoEdad()
+calculoEdad(0)
+calculoEdad('tengo 20')
+calculoEdad(-30)
+calculoEdad(14)
+calculoEdad(41)
+calculoEdad(75)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Este es el resultado:
+            </p>
+
+            <img src="../assets/img/funciones-param-return-7.png" alt="ejemplo funcion con parametro que retornan un valor">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Conclusion</h2>
+            </div>
+
+            <p class="container__text">
+                Estas son las formas en las que podemos definir funciones, hay varias formas de definir funciones, las que hemos visto en esta ocasion son funciones declaradas, con parametros, con valor de retorno, o ambas. Existen las funciones expresadas, funciones de flecha, funciones anonimas autoejecutables, pero las veremos en otra seccion. <br><br>Hay que tener en cuenta que no siempre una funcion debe retornar algo, hay veces que solo queremos que haga un procedimiento, una tarea y ya.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/funciones.js"></script>
+    
+</body>
+</html>
