@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <title>localeCompare</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">.localeCompare()</h1>
+        <p class="header__text">
+            El metodo .localeCompare() retorna un numero indicando si una cadena de caracteres de referencia va antes, despues o si es la misma que la cadena dada en orden alfabetico.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <p class="container__text">
+                Los nuevos argumentos <i>locales</i> y <i>options</i> permiten a las aplicaciones especificar el idioma cuyo orden alfabetico se debe usar y configurar el comportamiento de la funcion. <br><br> Veamos un ejemplo:
+            </p>
+
+            <pre>
+                <code>
+let inicio = "abc"
+let fin = "xyz"
+
+console.log(inicio.localeCompare(fin))
+console.log(fin.localeCompare(inicio))
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Definimos dos variables para comparar una con otra, para comparar cual va antes o cual va despues. En ambos casos nos devolvera un valor, nos devolvera un valor negativo si el valor referencia va antes del valor que estamos comparando. Nos devolvera un valor positivo si el valor referencia va despues del valor que estamos comparando.
+            </p>
+
+            <img src="../../assets/img/localeCompare-string-1.png" alt="captura resultado ejemplo localeCompare method string">
+        </section>
+
+        <section class="container">
+            <a href="../../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/strings/localeCompare.js"></script>
+    
+</body>
+</html>
