@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Arreglos</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#arreglos</h1>
+        <p class="header__text">
+            Los <i>arrays</i> son objetos similares a una lista cuyo prototipo proporciona métodos para efectuar operaciones de recorrido y de mutación. Tanto la longitud como el tipo de los elementos de un <i>array</i> son variables. Dado que la longitud de un <i>array</i> puede cambiar en cualquier momento, y los datos se pueden almacenar en ubicaciones no contiguas, no hay garantía de que los <i>arrays</i> de JavaScript sean densos; esto depende de como el programador elija usarlos.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Creando un Array</h2>
+            </div>
+
+            <pre>
+                <code>
+let lenguajes = ['php', 'java', 'csharp', 'javascript']
+
+console.log(lenguajes)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para definir un arreglo, le damos un nombre al igual que una variable, pero su valor, para saber que es un arreglo, los datos van dentro de corchetes ([]) y cada valor va separado por comas (,). Cada valor de un array puede ser de cualquier tipo de dato primitivo. Veamos en consola que nos muestra:
+            </p>
+
+            <img src="../assets/img/arreglo-1.png" alt="definiendo un arreglo">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Accediendo a elementos</h2>
+            </div>
+
+            <p class="container__text">
+                Para acceder a un elemento de un array en especifico, se debe indicar el indice del elemento. Veamos un ejemplo:
+            </p>
+
+            <pre>
+                <code>
+console.log(lenguajes[2])
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Recordemos que los indices empiezan desde el cero, por lo tanto, el indice 2 tiene el valor de <i>csharp</i>. Veamos el resultado en consola:
+            </p>
+
+            <img src="../assets/img/arreglo-2.png" alt="accediendo a elemento de un arreglo">
+
+            <p class="container__text">
+                Veamos como podemos acceder al primer y ultimo elemento:
+            </p>
+
+            <pre>
+                <code>
+console.log(lenguajes[0])
+console.log(lenguajes[lenguajes.length - 1])
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para acceder al primer elemento recordemos que los indices de donde se guardan los datos empieza desde el cero, por ende, cero es el primer elemento. Para acceder al ultimo debemos hacer un medio truco, calculando la longitud del arreglo. Para calcular la longitud de un arreglo se puede usar la propiedad <i>.length</i> el cual nos devolverá el total de elementos, en este ejemplo tenemos 4 elementos. Pero el ultimo elemento su indice NO es 4, ya que los indices empiezan desde el cero, entonces, a la longitud del arreglo le restamos un -1, y con eso accedemos al ultimo elemento.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Recorriendo un Array</h2>
+            </div>
+
+            <pre>
+                <code>
+lenguajes.forEach((el, i) => {
+    console.log(`${i}: ${el}`)
+})
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para recorrer un array se utiliza <i>foreach</i> una estructura repetitiva para recorrer cada elemento del arreglo y poder mostrarle en pantalla. Para poder usarlo se hace por la notación del punto (.) <i>foreach</i> recibe 3 parámetros para poder recorrer un array, el tercer parámetro es opcional, el primer parámetro hace referencia a cada elemento del arreglo, el segundo parámetro hace referencia al indice de cada elemento. Veamos el resultado:
+            </p>
+
+            <img src="../assets/img/arreglo-3.png" alt="recorriendo un array">
+
+            <p class="container__text">
+                En otra sección veremos los métodos de instancia que podemos usar cuando estemos trabajando con Arrays.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/arreglos.js"></script>
+    
+</body>
+</html>
