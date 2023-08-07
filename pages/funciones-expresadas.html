@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Funciones Expresadas</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#funciones-expresadas</h1>
+        <p class="header__text">
+            Las funciones tambien se pueden crear mediante una expresion de funcion. Esta funcion puede ser anonima; no tiene porque tener un nombre.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Definiendo una funcion expresada</h2>
+            </div>
+
+            <pre>
+                <code>
+const cuadrado = function (num) {
+
+    if (typeof num == "undefined") return console.warn("Debes ingresar un valor numerico.");
+    if (typeof num !== "number") return console.warn("Ingresa un numero para evaluar.");
+
+    return num * num
+}
+
+let resultado = cuadrado(3)
+console.log(resultado)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para definir una funcion expresada hacemos uso de <i>const</i> seguido de un nombre como si fueramos a declarar una variable, pero el valor de esta sera la funcion expresada. Dentro podemos hacer el procedimiento que queremos que haga como cualquier funcion, lo unico que cambia es la forma en como las definimos. <br><br>Dentro de la funcion expresada estamos recibiendo un parametro, un valor numerico para elevarlo al cuadrado. Se hacen las validaciones en diferentes casos que pueden dar errores cuando el usuario intente interactuar con el programa. Finalmente retornamos un valor elevado al cuadrado, lo guardamos en una variable resultado para imprimirlo en consola. <br><br>Y este es el resultado:
+            </p>
+
+            <img src="../assets/img/funcion-expresada-1.png" alt="definiendo funcion expresada con parametro y retorno de valor">
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/funciones-expresadas.js"></script>
+    
+</body>
+</html>
