@@ -12,7 +12,7 @@
     <header class="header">
         <h1 class="header__title">#numbers</h1>
         <p class="header__text">
-            Es un objeto primitivo que nos permite representar y manipular valores numericos.
+            Es un objeto primitivo que nos permite representar y manipular valores numéricos.
         </p>
     </header>
 
@@ -20,13 +20,13 @@
 
         <section class="container">
             <p class="container__text">
-                El constructor Number contiene constantes y metodos para trabajar con numeros. Valores de otro tipo pueden ser convertidos a numeros usando la funcion Number()
+                El constructor Number contiene constantes y métodos para trabajar con números. Valores de otro tipo pueden ser convertidos a números usando la función Number()
             </p>
         </section>
 
         <section class="container">
             <div class="container__title">
-                <h2>Crear valores numericos</h2>
+                <h2>Crear valores numéricos</h2>
             </div>
 
             <p class="container__text">
@@ -42,7 +42,7 @@ let edadIII = Number(50)
             </pre>
 
             <p class="container__text">
-                Podemos definir valores numericos directamente a una variable con el valor numerico, o usando el contructor Number, o la funcion Number. Al definir con el constructor Number, este nos devuelve un objeto, ya que ha sido creado con el prototype del constructor Number. A diferencia de las otras dos formas, no son instancias del objeto Number, por lo tanto no fueron creadas con el prototype del constructor Number. <br><br> Veamos que nos devuelve al usar la instruccion - instanceof - para verificar si tienen el prototype Number.
+                Podemos definir valores numéricos directamente a una variable con el valor numérico, o usando el constructor Number, o la función Number. Al definir con el constructor Number, este nos devuelve un objeto, ya que ha sido creado con el prototype del constructor Number. A diferencia de las otras dos formas, no son instancias del objeto Number, por lo tanto no fueron creadas con el prototype del constructor Number. <br><br> Veamos que nos devuelve al usar la instrucción - instanceof - para verificar si tienen el prototype Number.
             </p>
 
             <pre>
@@ -60,7 +60,7 @@ console.log(edadIII instanceof Number)
             <img src="../assets/img/number-1.png" alt="ejemplo number instanceof">
 
             <p class="container__text">
-                Nos devuelve true el unico valor que definimos con el constructor Number - edadII - los otros nos devuelve falso porque no han sido creado por el constructor, sin embargo, son number, la unica diferencia es que no tienen la propiedad - prototype: Number -. <br><br> Ahora veamos que nos devuelve cuando usamos la instruccion - typeof -.
+                Nos devuelve true el único valor que definimos con el constructor Number - edadII - los otros nos devuelve falso porque no han sido creado por el constructor, sin embargo, son number, la unica diferencia es que no tienen la propiedad - prototype: Number -. <br><br> Ahora veamos que nos devuelve cuando usamos la instrucción - typeof -.
             </p>
 
             <pre>
@@ -78,7 +78,7 @@ console.log(typeof edadIII)
             <img src="../assets/img/number-2.png" alt="ejemplo number typeof">
 
             <p class="container__text">
-                Al igual que el ejemplo anterior el valor - edadII - nos devuelve un - object - osea que el tipo de dato es un objeto en si, se debe a que al definirlo con el constructor Number es un objeto el que estamos creando. Sigue siendo un Number ya que ha sido creado con el constructor, lo diferente es que tiene en sus propidades el - prototype: Number -. Los demas valores devuelven como resultado - number -, su tipo de dato.
+                Al igual que el ejemplo anterior el valor - edadII - nos devuelve un - object - osea que el tipo de dato es un objeto en si, se debe a que al definir con el constructor Number es un objeto el que estamos creando. Sigue siendo un Number ya que ha sido creado con el constructor, lo diferente es que tiene en sus propiedades el - prototype: Number -. Los demás valores devuelven como resultado - number -, su tipo de dato.
             </p>
         </section>
 
