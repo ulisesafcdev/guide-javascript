@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Condicionales</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#condicionales</h1>
+        <p class="header__text">
+            Ejecuta una sentencia si una condición especificada es evaluada como verdadera. Si la condición es evaluada como falsa, otra sentencia puede ser ejecutada.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Ejemplo</h2>
+            </div>
+            <p class="container__text">
+                Veremos un ejemplo calculando la edad de un usuario y determinar si es mayor de edad o no:
+            </p>
+
+            <pre>
+                <code>
+let edad = 24
+
+if (edad >= 18) {
+    console.log(`Eres mayor de edad`)
+} else {
+    console.log(`Aun eres menor de edad`)
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En el ejemplo anterior utilizamos la sentencia condicional if-else. Definimos una variable llamada edad con el valor de 24, con la sentencia <i>if</i> evaluamos si la condición se cumple, si la edad es mayor o igual a 18 imprimir en pantalla que eres mayor de edad, si esta condición no se cumple, la condición entra en <i>else</i>.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Multiples sentencias</h2>
+            </div>
+
+            <p class="container__text">
+                Multiples sentencias if-else pueden ser anidadas para crear una clausula else-if. Veamos el mismo ejemplo anterior:
+            </p>
+
+            <pre>
+                <code>
+let edad = 84
+
+/* if (edad >= 18) {
+    console.log(`Eres mayor de edad`)
+} else {
+    console.log(`Aun eres menor de edad`)
+} */
+
+if (edad < 18) {
+    console.log(`Aun eres menor de edad`)
+} else if (edad >= 18 && edad < 60){
+    console.log(`Eres mayor de edad`)
+} else {
+    console.log(`Eres un adulto mayor de la tercera edad`)
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Un ejemplo sencillo de multiples sentencias, con el mismo ejemplo calculamos las posibles respuestas, evaluamos en caso de que el usuario sea menor de edad, evaluamos en caso de que sea mayor de edad y que no sobrepase la tercera edad, y finalmente si no se cumplen las sentencias if, imprimir un mensaje.
+            </p>
+
+            <p class="container__text">
+                La condición que se cumpla es la que entrara en la ejecución del programa.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/condicionales.js"></script>
+    
+</body>
+</html>
