@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Switch</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#switch</h1>
+
+        <p class="header__text">
+            La declaración <span class="example">switch</span> evalúa una expresión, comparando el valor de esa expresión con una instancia <span class="example">case</span>, y ejecuta declaraciones asociadas a ese <span class="example">case</span>, asi como las declaraciones en los <span class="example">case</span> que siguen.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <p class="container__text">
+                Si ocurre una coincidencia, el programa ejecuta las declaraciones asociadas correspondientes. Si la expresión coincide con multiples entradas, la primera sera la seleccionada, incluso si las mayúsculas son tenidas en cuenta.
+            </p>
+
+            <p class="container__text">
+                El programa primero busca la primer instancia <span class="example">case</span> cuya expresión se evalúa con el mismo valor de la expresión de entrada y luego transfiere el control a esa clausula ejecutando las declaraciones asociadas. Si no se encuentra una clausula de <span class="example">case</span> coincidente, el programa busca la clausula <span class="example">default</span> opcional, y si encuentra, transfiere el control a esa instancia.
+            </p>
+
+            <p class="container__text">
+                La declaración <span class="example">break</span> es opcional y esta asociada con cada etiqueta de <span class="example">case</span> y asegura que el programa salga del <span class="example">switch</span> una vez que se ejecute la instrucción coincidente y continue la ejecución en la instrucción siguiente. Si se omite el <span class="example">break</span> el programa continua la ejecución en la siguiente instrucción.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Usando #switch</h2>
+            </div>
+
+            <pre>
+                <code>
+let verduras = "manzanas"
+
+switch (verduras) {
+    case "peras":
+        console.log(`La libra de peras cuesta $2.15`)
+        break;
+    case "uvas":
+        console.log(`La libra de uvas cuesta $3.55`)
+        break;
+    case "fresas":
+        console.log(`La libra de fresas cuesta $1.15`)
+        break;
+    case "manzanas":
+        console.log(`La libra de manzanas cuesta $1.25`)
+        break;
+
+    default:
+        console.log(`Busca ayuda a un asociado`)
+        break;
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En el ejemplo anterior se evalúa la variable <span class="example">verduras</span>, según sea el caso entrara en la ejecución en la instrucción correspondiente, en este ejemplo la ejecución se realiza en <span class="example">"manzanas"</span> teniendo como resultado:
+            </p>
+
+            <img src="../assets/img/switch-1.png" alt="resultado ejemplo switch">
+
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+        
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/switch.js"></script>
+    
+</body>
+</html>
