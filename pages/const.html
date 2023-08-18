@@ -14,7 +14,7 @@
     <header class="header">
         <h1 class="header__title">#constantes</h1>
         <p class="header__text">
-            Una constante es una variable con un valor definido que no se puede redeclarar.
+            <span class="example">const</span> es una variable constante con un valor definido que no se puede cambiar su valor ni tampoco usar el mismo nombre en otra constante dentro del mismo bloque.
         </p>
     </header>
 
@@ -22,7 +22,7 @@
 
         <section class="container">
             <p class="container__text">
-                Las variables constantes presentan un ámbito de bloque tal y como lo hacen las variables definidas usando la instrucción let, con la diferencia que el valor de una constante no puede cambiarse a través de la reasignación. Las constantes no se pueden redeclarar. Veamos como se declara una constante:
+                Las variables constantes presentan un ámbito de bloque tal y como lo hacen las variables definidas usando la instrucción <span class="example">let</span>, con la diferencia que el valor de una constante no puede cambiarse. Las constantes no se pueden usar con el mismo nombre dentro del mismo bloque. Veamos como se declara una constante:
             </p>
 
             <pre>
@@ -39,7 +39,7 @@ console.log(PI)
             <img src="../assets/img/const-1.png" alt="como se declara una constante">
 
             <p class="container__text">
-                Las constantes por convención se definen en mayúsculas para distinción de las demás variables que no son una constante. Es necesario inicializar el valor de una constante, de lo contrario nos marcaría un error. La declaración de una constante crea una referencia de solo lectura, por lo tanto no puede ser reasignado su valor, en el caso de que la asignacion sea a un objeto, este si puede ser alterado.
+                Las constantes por convención se definen en mayúsculas para distinción de las demás variables que no son una constante. Es necesario inicializar el valor de una constante, de lo contrario nos marcaría un error. La declaración de una constante crea una referencia de solo lectura, por lo tanto no puede ser reasignado su valor, en el caso de que la asignación sea a un objeto, este si puede ser alterado.
             </p>
         </section>
 

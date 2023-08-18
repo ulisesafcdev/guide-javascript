@@ -12,7 +12,7 @@
     <header class="header">
         <h1 class="header__title">#funciones</h1>
         <p class="header__text">
-            Una función es un subprograma que puede ser llamado por código externo o interno a la función. Una función se compone de una secuencia de declaraciones, que conforman el llamado cuerpo de la función. Se pueden pasar valores a una función, y la función puede devolver un valor.
+            Una función es un sub programa que puede ser llamado por código externo o interno a la función. Una función se compone de una secuencia de declaraciones, que conforman el llamado cuerpo de la función. Se pueden pasar valores a una función, y la función puede devolver un valor.
         </p>
     </header>
 
@@ -25,7 +25,7 @@
             </div>
             
             <p class="container__text">
-                Toda función en JavaScript es un objeto <i>Function</i>. Las funciones no son lo mismo que los procedimientos. Una función siempre devuelve un valor, pero un procedimiento, puede o no puede devolver un valor. <br><br>Veamos como se define una función:
+                Toda función en JavaScript es un objeto <span class="example">Function</span>. Las funciones no son lo mismo que los procedimientos. Una función siempre devuelve un valor, pero un procedimiento, puede o no puede devolver un valor. <br><br>Veamos como se define una función:
             </p>
 
             <pre>
@@ -39,7 +39,7 @@ saludo()
             </pre>
 
             <p class="container__text">
-                Hemos definido una función llamada <i>saludo</i>, dentro tiene una instrucción que imprime un mensaje por consola. Para invocar este método se coloca el nombre de la función seguido de paréntesis. Veamos el resultado:
+                Hemos definido una función llamada <span class="example">saludo()</span>, dentro tiene una instrucción que imprime un mensaje por consola. Para invocar este método se coloca el nombre de la función seguido de paréntesis. Veamos el resultado:
             </p>
 
             <img src="../assets/img/funciones-1.png" alt="definiendo función primera forma básica">
@@ -51,7 +51,7 @@ saludo()
             </div>
 
             <p class="container__text">
-                Para devolver un valor especifico  distinto del predeterminado, una función debe tener una sentencia <i>return</i>, que especifique el valor a devolver. Una función sin una instrucción <i>return</i> devolverá el valor predeterminado, asi como en el ejemplo anterior. <br><br>Veamos como se define una función con valor de retorno:
+                Para devolver un valor especifico distinto del predeterminado, una función debe tener una sentencia <span class="example">return</span>, que especifique el valor a devolver. Una función sin una instrucción <span class="example">return</span> devolverá el valor predeterminado, asi como en el ejemplo anterior. <br><br>Veamos como se define una función con valor de retorno:
             </p>
 
             <pre>
@@ -66,7 +66,7 @@ console.log(resultado)
             </pre>
 
             <p class="container__text">
-                Definimos una función llamada <i>operación</i> que nos devuelve una suma con la instrucción <i>return</i>, la función nos devuelve un resultado de una suma, por lo tanto ese resultado lo guardamos en una variable llamada resultado y luego la mostramos por consola, y veamos que nos imprime en la consola del navegador:
+                Definimos una función llamada <span class="example">operación</span> que nos devuelve una suma con la instrucción <span class="example">return</span>, la función nos devuelve un resultado de una suma, por lo tanto ese resultado lo guardamos en una variable llamada <span class="example">resultado</span> y luego la mostramos por consola, y veamos que nos imprime en la consola del navegador:
             </p>
 
             <img src="../assets/img/funciones-return-2.png" alt="definiendo función con return">
@@ -92,19 +92,19 @@ lenguaje("JavaScript")
             </pre>
 
             <p class="container__text">
-                Hemos definido una función que recibe un parámetro llamado <i>nombreLenguaje</i>, dentro de esta función hay una instruction que nos imprime un mensaje y se concatena el valor del parámetro con la oración para mostrar el mensaje en consola. Veamos cual es el resultado:
+                Hemos definido una función que recibe un parámetro llamado <span class="example">nombreLenguaje</span>, dentro de esta función hay una instrucción que nos imprime un mensaje y se concatena el valor del parámetro con la oración para mostrar el mensaje en consola. Veamos cual es el resultado:
             </p>
 
             <img src="../assets/img/funciones-param-3.png" alt="definiendo una función con parámetros">
 
             <p class="container__text">
-                Podemos observar que nos muestra un mensaje con el valor que le pasamos a la función. En este caso, el valor que le pasamos fue <i>JavaScript</i>. Pero que pasaría si no le pasamos un valor? Veamos que sucede:
+                Podemos observar que nos muestra un mensaje con el valor que le pasamos a la función. En este caso, el valor que le pasamos fue <span class="example">"JavaScript"</span>. Pero que pasaría si no le pasamos un valor? Veamos que sucedespan
             </p>
 
             <img src="../assets/img/funciones-param-4.png" alt="resultado función sin valor en parámetro">
 
             <p class="container__text">
-                El resultado que nos muestra es <i>undefined</i> ya que no hay un valor definido ni por el programa ni por el usuario. Para evitar esto hay varias formas, una de ellas es definir un valor al parámetro, y asi evitar en caso de que el usuario no ponga ningún valor como parámetro a la llamada de la función. O la otra solución es, mediante la estructura condicional <i>if-else</i> evaluar cuando el usuario no defina un valor y mostrarle un mensaje de advertencia indicando que no ha definido ningún valor. <br><br>Veamos la primera solución:
+                El resultado que nos muestra es <span class="example">undefined</span> ya que no hay un valor definido ni por el programa ni por el usuario. Para evitar esto hay varias formas, una de ellas es definir un valor al parámetro, y asi evitar en caso de que el usuario no ponga ningún valor como parámetro a la llamada de la función. O la otra solución es, mediante la estructura condicional <span class="example">if-else</span> evaluar cuando el usuario no defina un valor y mostrarle un mensaje de advertencia indicando que no ha definido ningún valor. <br><br>Veamos la primera solución:
             </p>
 
             <pre>

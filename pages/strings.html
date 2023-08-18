@@ -12,14 +12,14 @@
     <header class="header">
         <h1 class="header__title">#strings</h1>
         <p class="header__text">
-            El objeto String se utiliza para representar y manipular una secuencia de caracteres.
+            El objeto <span class="example">String</span> se utiliza para representar y manipular una secuencia de caracteres.
         </p>
     </header>
 
     <main class="main">
         <section class="container">
             <p class="container__text">
-                Las cadenas son útiles para almacenar datos que se pueden representar en forma de texto. Alguna de las operaciones mas utilizadas en cadenas son verificar su longitud de caracteres (length), verificar la existencia o ubicación de subcadennas con indexOf o extraer subcadenas con el método substring().
+                Las cadenas son útiles para almacenar datos que se pueden representar en forma de texto. Alguna de las operaciones mas utilizadas en cadenas son verificar su longitud de caracteres, verificar la existencia o ubicación de sub cadenas con <span class="example">indexOf()</span> o extraer sub cadenas con el método <span class="example">substring()</span>.
             </p>
         </section>
 
@@ -44,7 +44,7 @@ console.log(textoIII)
             </pre>
 
             <p class="container__text">
-                Para crear una cadena de texto se puede usar comillas dobles (""), comillas simples ('') o comillas invertidas (``). Cualquiera es valida para definir una cadena de texto. En este ejemplo hemos creado cadena de texto como valor a una variable definida con let, pero, también podemos crearlas con el objeto String de javascript de la siguiente manera:
+                Para crear una cadena de texto se puede usar comillas dobles (""), comillas simples ('') o comillas invertidas (``). Cualquiera es valida para definir una cadena de texto. En este ejemplo hemos creado cadena de texto como valor a una variable definida con <span class="example">let</span>, pero, también podemos crearlas con el objeto <span class="example">String</span> de javascript de la siguiente manera:
             </p>
 
             <pre>
@@ -61,13 +61,13 @@ console.log(textoIV)
             <img src="../assets/img/string-1.png" alt="ejemplo crear string">
 
             <p class="container__text">
-                En el ultimo ejemplo creamos una cadena de texto usando el constructor del objeto String de javascript, este nos devuelve un objeto String, que no es un tipo de dato primitivo. Por eso nos lo imprime de la forma siguiente:
+                En el ultimo ejemplo creamos una cadena de texto usando el constructor del objeto <span class="example">String</span> de javascript, este nos devuelve un objeto <span class="example">String</span>, que no es un tipo de dato primitivo. Por eso nos lo imprime de la forma siguiente:
             </p>
 
             <img src="../assets/img/string-2.png" alt="ejemplo objeto string">
 
             <p class="container__text">
-                Para entender esto usaremos dos palabras claves, la primera, instanceof, esta se encarga de verificar si un objeto contiene la propiedad prototype de un constructor. La segunda, typeof, esta se encarga de verificar el tipo de dato del objeto. Veamos que nos devuelve cuando comparamos con las cadenas de texto que hemos definido.
+                Para entender esto usaremos dos palabras claves, la primera, <span class="example">instanceof</span>, esta se encarga de verificar si un objeto contiene la propiedad <span class="example">prototype</span> de un constructor. La segunda, <span class="example">typeof</span>, esta se encarga de verificar el tipo de dato del objeto. Veamos que nos devuelve cuando comparamos con las cadenas de texto que hemos definido.
             </p>
 
             <pre>
@@ -86,7 +86,7 @@ console.log(typeof texto)
             <img src="../assets/img/string-3.png" alt="ejemplo instanceof y typeof">
 
             <p class="container__text">
-                Usamos como ejemplo la variable que definimos como una cadena de texto, al verificarlo con - instanceof - nos devuelve false porque no ha sido creado con el constructor String, al verificarlo con - typeof - nos devuelve string porque a sido definido como un tipo de dato primitivo. Ahora veamos que nos devuelve cuando verificamos la cadena de texto que hemos creado con el constructor:
+                Usamos como ejemplo la variable que definimos como una cadena de texto, al verificarlo con <span class="example">instanceof</span> nos devuelve <span class="example">false</span> porque no ha sido creado con el constructor <span class="example">String</span>, al verificarlo con <span class="example">typeof</span> nos devuelve <span class="example">"string"</span> porque a sido definido como un tipo de dato primitivo. Ahora veamos que nos devuelve cuando verificamos la cadena de texto que hemos creado con el constructor:
             </p>
 
             <pre>
@@ -105,7 +105,7 @@ console.log(typeof textoIV)
             <img src="../assets/img/string-4.png" alt="ejemplo instanceof y typeof pt2">
 
             <p class="container__text">
-                Usamos como ejemplo la cadena de texto que definimos con el constructor String, al verificar con - instanceof - nos devuelve true, lo que significa que ha sido creado con el constructor de String, pero al verificarlo con - typeof - nos devuelve object, esto nos indica que no es un tipo de dato primitivo a pesar que lo hemos definido con el constructor de String, en realidad es un objeto String. Esta es la diferencia que hay cuando definimos valores con los constructores de cada objeto en javascript, sea String, Array, Date, entre otros.
+                Usamos como ejemplo la cadena de texto que definimos con el constructor <span class="example">String</span>, al verificar con <span class="example">instanceof</span> nos devuelve <span class="example">true</span>, lo que significa que ha sido creado con el constructor de <span class="example">String</span>, pero al verificarlo con <span class="example">typeof</span> nos devuelve <span class="example">"object"</span>, esto nos indica que no es un tipo de dato primitivo a pesar que lo hemos definido con el constructor de <span class="example">String</span>, en realidad es un objeto <span class="example">String</span>. Esta es la diferencia que hay cuando definimos valores con los constructores de cada objeto en javascript, sea String, Array, Date, entre otros.
             </p>
         </section>
 

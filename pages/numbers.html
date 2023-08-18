@@ -20,7 +20,7 @@
 
         <section class="container">
             <p class="container__text">
-                El constructor Number contiene constantes y métodos para trabajar con números. Valores de otro tipo pueden ser convertidos a números usando la función Number()
+                El constructor <span class="example">Number</span> contiene constantes y métodos para trabajar con números. Valores de otro tipo pueden ser convertidos a números usando la función <span class="example">Number()</span>.
             </p>
         </section>
 
@@ -30,7 +30,7 @@
             </div>
 
             <p class="container__text">
-                Veamos como podemos crear valores numericos en javascript:
+                Veamos como podemos crear valores numéricos en javascript:
             </p>
 
             <pre>
@@ -42,7 +42,7 @@ let edadIII = Number(50)
             </pre>
 
             <p class="container__text">
-                Podemos definir valores numéricos directamente a una variable con el valor numérico, o usando el constructor Number, o la función Number. Al definir con el constructor Number, este nos devuelve un objeto, ya que ha sido creado con el prototype del constructor Number. A diferencia de las otras dos formas, no son instancias del objeto Number, por lo tanto no fueron creadas con el prototype del constructor Number. <br><br> Veamos que nos devuelve al usar la instrucción - instanceof - para verificar si tienen el prototype Number.
+                Podemos definir valores numéricos directamente a una variable con el valor numérico, o usando el constructor <span class="example">Number</span>, o la función <span class="example">Number</span>. Al definir con el constructor, este nos devuelve un objeto, ya que ha sido creado con el prototype del constructor. A diferencia de las otras dos formas, no son instancias del objeto <span class="example">Number</span>, por lo tanto no fueron creadas con el prototype del constructor. <br><br> Veamos que nos devuelve al usar la instrucción <span class="example">instanceof</span> para verificar si tienen el prototype <span class="example">Number</span>.
             </p>
 
             <pre>
@@ -60,7 +60,7 @@ console.log(edadIII instanceof Number)
             <img src="../assets/img/number-1.png" alt="ejemplo number instanceof">
 
             <p class="container__text">
-                Nos devuelve true el único valor que definimos con el constructor Number - edadII - los otros nos devuelve falso porque no han sido creado por el constructor, sin embargo, son number, la unica diferencia es que no tienen la propiedad - prototype: Number -. <br><br> Ahora veamos que nos devuelve cuando usamos la instrucción - typeof -.
+                Nos devuelve <span class="example">true</span> el único valor que definimos con el constructor <span class="example">edadII</span> los otros nos devuelve <span class="example">false</span> porque no han sido creado por el constructor, sin embargo, son <span class="example">number</span>, la unica diferencia es que no tienen la propiedad <span class="example">prototype: Number</span>. <br><br> Ahora veamos que nos devuelve cuando usamos la instrucción <span class="example">typeof</span>.
             </p>
 
             <pre>
@@ -78,7 +78,7 @@ console.log(typeof edadIII)
             <img src="../assets/img/number-2.png" alt="ejemplo number typeof">
 
             <p class="container__text">
-                Al igual que el ejemplo anterior el valor - edadII - nos devuelve un - object - osea que el tipo de dato es un objeto en si, se debe a que al definir con el constructor Number es un objeto el que estamos creando. Sigue siendo un Number ya que ha sido creado con el constructor, lo diferente es que tiene en sus propiedades el - prototype: Number -. Los demás valores devuelven como resultado - number -, su tipo de dato.
+                Al igual que el ejemplo anterior el valor <span class="example">edadII</span> nos devuelve un <span class="example">object</span> osea que el tipo de dato es un objeto en si, se debe a que al definir con el constructor, es un objeto el que estamos creando. Sigue siendo un <span class="example">Number</span> ya que ha sido creado con el constructor, lo diferente es que tiene en sus propiedades <span class="example">prototype: Number</span>. Los demás valores devuelven como resultado <span class="example">number</span>, su tipo de dato.
             </p>
         </section>
 
