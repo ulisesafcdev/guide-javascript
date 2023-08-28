@@ -30,6 +30,7 @@ body {
 
 .header__text {
     color: #f5f5f5;
+    line-height: 150%;
 }
 
 .main {
@@ -69,6 +70,7 @@ body {
 
 .container__text {
     color: #f5f5f5;
+    line-height: 150%;
 }
 
 pre {
