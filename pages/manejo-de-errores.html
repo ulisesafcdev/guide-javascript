@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Manejo de Errores</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#manejo-de-errores</h1>
+        <p class="header__text">
+            Son expresiones de manejo de excepciones, puedes lanzar excepciones usando la instrucción <span class="example">throw</span> y manejarlas usando las declaraciones <span class="example">try...catch</span>.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <div class="container__title">
+                <h2>Tipos de excepciones</h2>
+            </div>
+
+            <p class="container__text">
+                Casi cualquier objeto se puede lanzar en JavaScript. Sin embargo, no todos los objetos lanzados son iguales. Si bien es común lanzar números o cadenas como errores, con frecuencia es mas efectivo usar uno de los tipos de excepción creados específicamente para este propósito.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Expresión <span class="example__title">throw</span></h2>
+            </div>
+
+            <p class="container__text">
+                Utiliza la expresión <span class="example">throw</span> para lanzar una excepción. Una expresión <span class="example">throw</span> especifica el valor que se lanzara:
+            </p>
+
+            <pre>
+                <code>
+throw "Hubo un problema inesperado"
+throw false
+throw 404
+                </code>
+            </pre>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Declaración <span class="example__title">try...catch</span></h2>
+            </div>
+
+            <p class="container__text">
+                La declaración <span class="example">try...catch</span> marca un bloque de expresiones para probar y especifica una o mas respuestas en caso de que se produzca una excepción. Si se lanza una excepción, la declaración <span class="example">try...catch</span> la detecta.
+            </p>
+
+            <p class="container__text">
+                La declaración <span class="example">try...catch</span> consta de un bloque <span class="example">try</span>, que contiene una o mas declaraciones, y un bloque <span class="example">catch</span>, que contiene declaraciones que especifican que hacer si se lanza una excepción en el bloque <span class="example">try</span>
+            </p>
+
+            <p class="container__text">
+                En otras palabras, deseas que el bloque <span class="example">try</span> tenga éxito, pero si no es asi, deseas que el control pase al bloque <span class="example">catch</span>. Si alguna instrucción dentro del bloque <span class="example">try</span> (o en una función llamada desde dentro del bloque <span class="example">try</span>) arroja una excepción, el control inmediatamente cambia al bloque <span class="example">catch</span>. Si no se lanza ninguna excepción en el bloque <span class="example">try</span> se omite el bloque <span class="example">catch</span>.
+            </p>
+
+            <pre>
+                <code>
+try {
+    instrucciones
+} catch (e) {
+    console.error(e)
+}
+                </code>
+            </pre>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>El bloque <span class="example__title">finally</span></h2>
+            </div>
+
+            <p class="container__text">
+                El bloque <span class="example">finally</span> contiene instrucciones que se ejecutaran después que se ejecuten los bloques <span class="example">try</span> y <span class="example">catch</span>. Ademas, el bloque <span class="example">finally</span> ejecuta antes el codigo que sigue a la declaración <span class="example">try...catch...finally</span>.
+            </p>
+
+            <p class="container__text">
+                Tambien es importante notar que el bloque <span class="example">finally</span> se ejecutara independientemente de que se produzca una excepción. Sin embargo, si se lanza una excepción, las declaraciones en el bloque <span class="example">finally</span> se ejecutan incluso si ningún bloque <span class="example">catch</span> maneje la excepción que se lanzo.
+            </p>
+
+            <pre>
+                <code>
+try {
+    instrucciones
+} catch (e) {
+    console.error(e)
+} finally {
+    instruccion que siempre se ejecutara
+}
+                </code>
+            </pre>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Pongámolo a prueba</h2>
+            </div>
+
+            <p class="container__text">
+                Veremos un ejemplo usando <span class="example">throw</span> y el bloque <span class="example">try...catch...finally</span>.
+            </p>
+
+            <pre>
+                <code>
+function numeroDelMes(numeroMes) {
+    numeroMes = numeroMes - 1
+
+    const meses = [
+        "Enero", 
+        "Febrero", 
+        "Marzo", 
+        "Abril", 
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre"
+    ]
+
+    if (meses[numeroMes]) {
+        return meses[numeroMes]
+    } else {
+        throw "Numero del mes invalido"
+    }
+}
+
+
+try {
+    let nombreMes = numeroDelMes(3)
+    console.log(nombreMes)
+} catch (error) {
+    console.error(error)
+} finally {
+    console.info("Tarea finalizada")
+}
+                </code>
+            </pre>
+
+            <div class="container__title">
+                <h2>Explicación del código</h2>
+            </div>
+
+            <p class="container__text">
+                En el ejemplo anterior, definimos una función llamada <span class="example">numeroDelMes()</span> que recibe como parámetro un numero en referencia al numero del mes que corresponde. Ese numero que recibe le volvemos a asignar su valor -1, para poder acceder al numero del mes correspondiente, recordemos que en los arreglos el indice empieza desde el 0, y los números del mes empiezan desde el 1. <br><br>Seguido definimos un arreglo llamado <span class="example">meses</span> con los nombres de los meses del anio.
+            </p>
+
+            <p class="container__text">
+                Seguido tenemos una condición que al ser verdadera nos devuelve el nombre del mes según el numero que le hallamos indicado. En caso de ser falso pues lanzamos una excepción con <span class="example">throw</span>.
+            </p>
+
+            <p class="container__text">
+                Finalmente, con el bloque <span class="example">try...catch...finally</span> ejecutamos nuestras instrucciones. Dentro del bloque <span class="example">try</span> definimos una variable llamada <span class="example">nombreMes</span> donde recibimos el nombre que nos devuelve la condición que definimos anteriormente y la mostramos por consola. <br><br>Dentro del bloque <span class="example">catch</span> capturamos la excepción que lanzamos siempre y cuando suceda un error dentro de <span class="example">try</span>. Ese error o esa excepción que lanzamos la recuperamos en la variable <span class="example">error</span> y la mostramos por consola. <br><br>Dentro del bloque <span class="example">finally</span> mostramos un mensaje por consola informando al usuario que la tarea ha finalizado, este mensaje siempre se mostrara independientemente si hubo o no un error dentro del bloque <span class="example">try</span>.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/trycatchfinally.js"></script>
+    
+</body>
+</html>
