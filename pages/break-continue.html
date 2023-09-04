@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Break y Continue</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#break-&-continue</h1>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Sentencia <span class="example__title">break</span></h2>
+            </div>
+            <p class="container__text">
+                Termina el bucle actual, sentencia switch y transfiere el control del programa a la siguiente sentencia a la sentencia de terminación de estos elementos. La sentencia <span class="example">break</span> incluye una sentencia opcional que permite al programa salir de una sentencia etiquetada. La sentencia <span class="example">break</span> necesita estar anidada dentro de la sentencia etiquetada. La sentencia etiquetada puede ser cualquier tipo de sentencia; no tiene que ser una sentencia de bucle.
+            </p>
+
+            <p class="container__text">
+                Veamos un ejemplo de como se puede utilizar <span class="example">break</span>:
+            </p>
+
+            <pre>
+                <code>
+for (let i = 0; i <= 10; i++) {
+    console.log(i)
+    if (i == 7) {
+        console.log(`Ya llegue a 7`)
+        break
+    }
+
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En el ejemplo anterior tenemos un bucle <span class="example">for</span> que se repite hasta 10. Dentro mostramos por consola el numero que se va aumentando en 1, tenemos una condición que cuando el bucle llegue al numero 7 detendremos el bucle con la sentencia <span class="example">break</span>. A pesar que el bucle tiene que llegar a 10, con la sentencia <span class="example">break</span> detenemos el bucle según la condición que hallamos establecido.
+            </p>
+
+            <p class="container__text">
+                Veamos el resultado:
+            </p>
+
+            <img src="../assets/img/break-1.png" alt="resultado ejemplo sentencia break">
+
+            <p class="container__text">
+                Por fines didácticos mostramos un mensaje indicando que se llego a la condición que establecimos, sin embargo, la sentencia <span class="example">break</span> detiene la ejecución del código en donde este se encuentre y evita que la instrucción siguiente se ejecute. Veamos que sucede cuando subimos la sentencia <span class="example">break</span> arriba de nuestro <span class="example">console.log()</span>
+            </p>
+
+            <img src="../assets/img/break-2.png" alt="captura codigo ejemplo sentencia break">
+
+            <p class="container__text">
+                Se puede notar que la instrucción <span class="example">console.log()</span> es de un tono pálido indicando que esa instrucción no se cumplirá ya que arriba de esta se encuentra la sentencia <span class="example">break</span> indicando que se detendrá la ejecución del código y evitando que se muestre nuestro <span class="example">console.log()</span> que habíamos definido.
+            </p>
+
+            <p class="container__text">
+                Veamos nuevamente el resultado:
+            </p>
+
+            <img src="../assets/img/break-3.png" alt="resultado ejemplo sentencia break parte 2">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Sentencia <span class="example__title">continue</span></h2>
+            </div>
+
+            <p class="container__text">
+                Termina la ejecución de las sentencias de la iteración actual del bucle actual o la etiqueta y continua la ejecución del bucle con la proxima iteración.
+            </p>
+
+            <p class="container__text">
+                En contraste con la sentencia <span class="example">break</span>, la sentencia <span class="example">continue</span> no termina la ejecución del bucle por completo; en cambio, en un bucle <span class="example">while</span>, salta de regreso a la condición, en un bucle <span class="example">for</span>, salta a la expresión actualizada.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a>
+            2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/breakcontinue.js"></script>
+    
+</body>
+</html>
