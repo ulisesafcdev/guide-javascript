@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Parámetro Rest</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#parámetro-rest</h1>
+        <p class="header__text">
+            La sintaxis de los parámetros <span class="example">rest</span> nos permiten representar un numero de argumentos como un array.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <p class="container__text">
+                El ultimo parámetro de una función se puede prefijar con <span class="example">...</span>, lo que hará que todos los argumentos restantes suministrados por el usuario se coloquen dentro de un array de JavaScript estándar.
+            </p>
+
+            <p class="container__text">
+                Solo el ultimo parámetro puede ser un parámetro <span class="example">rest</span>. Veamos un ejemplo de como funciona:
+            </p>
+
+            <pre>
+                <code>
+function calcularSuma(...num) {
+    let total = 0
+    for (const i of num) {
+        total += i
+    }
+
+    return total
+}
+
+let operacionSuma = calcularSuma(12, 8, 5)
+console.log(operacionSuma)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En este ejemplo tenemos una función llamada <span class="example">calcularSuma()</span> que recibe un parámetro llamado <span class="example">"num"</span>, le ponemos como prefijo el operador <span class="example">rest</span> indicando que recibirá mas de un parámetro y asi el usuario suministrar mas de un parámetro para calcular sumas. Como la función nos devuelve el total de las sumas lo almacenas en una variable llamada <span class="example">"operacionSuma"</span> y lo mostramos en consola.
+            </p>
+
+            <img src="../assets/img/operador-rest-1.png" alt="captura resultado ejemplo operador rest">
+        </section>
+
+        <section class="container">
+            <p class="container__text">
+                Veamos otro ejemplo:
+            </p>
+
+            <pre>
+                <code>
+function frutas(opcionA, opcionB, ...opciones) {
+    console.log(`Opcion A: ${opcionA}`)
+    console.log(`Opcion B: ${opcionB}`)
+    console.log(`Demas opciones: ${opciones}`)
+}
+
+frutas("manzanas", "fresas", "peras", "guayabas", "kiwis")
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En este otro ejemplo recibimos como mínimo dos parámetros <span class="example">"opcionA"</span> & <span class="example">"opcionB"</span>, seguido de un parámetro <span class="example">rest</span> el cual indica mas opciones de fruta que podemos definir. Al llamar a la función indicamos las opciones A y B, y si queremos indicar mas opciones las podemos definir ya que eso nos permite el operador <span class="example">rest</span>.
+            </p>
+
+            <p class="container__text">Este es el resultado:</p>
+
+            <img src="../assets/img/operador-rest-2.png" alt="captura resultado ejemplo operador rest">
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/parametro-rest.js"></script>
+    
+</body>
+</html>
