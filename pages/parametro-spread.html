@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Parámetro Spread</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#parámetro-spread</h1>
+        <p class="header__text">
+            La sintaxis extendida o <span class="example">spread</span> permite a un elemento iterable tal como un arreglo o cadena ser expandido en lugares donde cero o mas argumentos o elementos son esperados, o a un objeto ser expandido en lugares donde cero o mas pares de valores clave son esperados.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+
+            <div class="container__title">
+                <h2><span class="example__title">spread</span> para expandir <span class="example__title">arrays</span> literales</h2>
+            </div>
+
+            <p class="container__text">
+                Sin sintaxis expandida <span class="example">spread</span>, para crear un nuevo arreglo usando un arreglo existente como parte de el, no es suficiente la sintaxis de array literal y en su lugar se debe usar código imperativo con una combinación de <span class="example">push</span>, <span class="example">splice</span>, <span class="example">concat</span>, etc. Con la sintaxis expandida, esto se vuelve mucho mas practico.
+            </p>
+
+            <p class="container__text">Veamos un ejemplo:</p>
+
+            <pre>
+                <code>
+let norteamerica = ["Canada", "EE.UU", "Mexico"]
+let centroamerica = ["Belice", "Guatemala", "El Salvador", "Honduras", "Nicaragua", "Costa Rica", "Panama"]
+
+console.log(norteamerica)
+console.log(centroamerica)
+                </code>
+            </pre>
+
+            <img src="../assets/img/operador-spread-1.png" alt="captura resultado ejemplo operador spread">
+
+            <p class="container__text">
+                Si queremos unir ambos <span class="example">array</span> en uno solo, basta con hacer uso de la sintaxis extendida <span class="example">spread</span>.
+            </p>
+
+            <pre>
+                <code>
+let nortecentro = [...norteamerica, ...centroamerica]
+
+console.log(nortecentro)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Teniendo como resultado un solo <span class="example">array</span> con todos los países.
+            </p>
+
+            <img src="../assets/img/operador-spread-2.png" alt="captura resultado ejemplo operador spread">
+
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/parametro-spread.js"></script>
+    
+</body>
+</html>
