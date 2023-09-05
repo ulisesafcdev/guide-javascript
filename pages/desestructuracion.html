@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Desestructuracion</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#desestructuracion</h1>
+        <p class="header__text">
+            La sintaxis de <span class="example">desestructuracion</span> es una expresión de JavaScript que permite desempacar valores de arreglos o propiedades de objetos en distintas variables.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Desestructuracion de un arreglo</h2>
+            </div>
+
+            <pre>
+                <code>
+const notasAlumno = [7,8,5,9,5]
+
+console.log(notasAlumno)
+                </code>
+            </pre>
+
+            <img src="../assets/img/desestructuracion-arreglo-1.png" alt="captura resultado arreglo">
+
+            <p class="container__text">
+                Tenemos un <span class="example">arreglo</span> llamado <span class="example">"notasAlumno"</span> que almacena en cada posición una nota correspondiente a una materia en especifico. Pero, que pasaría si nosotros queremos que cada posición de nuestro arreglo de notas se almacene en una variable con el nombre de la materia a la que corresponde?
+            </p>
+
+            <p class="container__text">
+                Veamos como se puede hacer con la sintaxis de desestructuracion:
+            </p>
+
+            <pre>
+                <code>
+const [matematicas, lenguaje, ciencia, sociales, ingles] = notasAlumno
+
+console.log(`Matematicas ${matematicas}\nLenguaje: ${lenguaje}\nCiencia: ${ciencia}\nSociales: ${sociales}\nIngles: ${ingles}`)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Definimos en forma de arreglo con los nombres de la materia según la posición a la que queremos relacionar. Definiendo como valor igual al arreglo llamado <span class="example">"notasAlumno"</span>. Una vez hecho esto ya podemos acceder a estas variables por separado con el nombre que le hemos asignado y mostrarlas en consola con el nombre de la materia que corresponde.
+            </p>
+
+            <p class="container__text">Teniendo como resultado lo siguiente:</p>
+
+            <img src="../assets/img/desestructuracion-arreglo-2.png" alt="captura resultado ejemplo desestructuracion arreglo">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Desestructuracion de un objeto</h2>
+            </div>
+
+            <pre>
+                <code>
+let persona = {
+    nombres: "Ulises Alexis",
+    apellidos: "Flores Chavez",
+    edad: 24,
+    trabaja: true
+}
+
+console.log(persona)
+                </code>
+            </pre>
+
+            <img src="../assets/img/desestructuracion-objeto-1.png" alt="captura resultado objeto">
+
+            <p class="container__text">
+                Tenemos un <span class="example">objeto</span> llamado <span class="example">"persona"</span> con diferentes llaves y valores. Al igual que el ejemplo anterior, que pasaría si queremos almacenar cada llave con su valor en una variable correspondiente a cada una?
+            </p>
+
+            <p class="container__text">Veamos como se puede hacer con la sintaxis de desestructuracion:</p>
+
+            <pre>
+                <code>
+let {nombres, apellidos, edad, trabaja} = persona
+
+console.log(`Nombres: ${nombres}\nApellidos: ${apellidos}\nEdad: ${edad}\nTrabaja: ${trabaja}`)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Definimos en forma de objeto los nombres de las variables correspondientes a cada llave y valor de nuestro objeto que estamos desestructurando. Una vez definidos los nombres, ya podemos acceder a ellos y poderlos mostrar en consola teniendo como resultado lo siguiente:
+            </p>
+
+            <img src="../assets/img/desestructuracion-objeto-2.png" alt="captura resultado ejemplo desestructuracion objeto">
+
+            <p class="container__text">
+                Hay que tener en cuenta que a la hora de desestructurar un objeto, los nombres de las variables deben ser igual a las llaves del objeto, de lo contrario nos mostrara <span class="example">undefined</span> cuando queramos mostrar el valor.
+            </p>
+
+            <pre>
+                <code>
+let persona = {
+    nombres: "Ulises Alexis",
+    apellidos: "Flores Chavez",
+    edad: 24,
+    trabaja: true
+}
+
+let {nombres, apellidos, edad, empleo} = persona
+
+console.log(`Nombres: ${nombres}\nApellidos: ${apellidos}\nEdad: ${edad}\nTrabaja: ${empleo}`)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En el código tenemos nuestro objeto con la llave llamada <span class="example">"trabaja"</span>, pero, en la desestructuracion hemos definido con el nombre de <span class="example">"empleo"</span>, a la hora de mostrar en pantalla y acceder al valor de este a simple vista no ha pasado nada, pero al ver el resultado en consola nos muestra lo siguiente:
+            </p>
+
+            <img src="../assets/img/desestructuracion-objeto-3.png" alt="captura resultado ejemplo desestructuracion objeto">
+
+            <p class="container__text">
+                Solamente cuando se desestructura un objeto, las variables deben ser el mismo nombre que las llaves del objeto.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/desestructuracion.js"></script>
+    
+</body>
+</html>
