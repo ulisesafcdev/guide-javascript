@@ -104,7 +104,7 @@ img {
 .example__title {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: #5e56b681;
-    padding: 0.15rem;
+    padding: 2px 5px;
     border-radius: 4px;
     letter-spacing: 1px;
 }
