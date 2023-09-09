@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Prototipos POO</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#prototipos</h1>
+        <p class="header__text">
+            Los prototipos son un mecanismo mediante el cual los objetos en JavaScript heredan características entre si.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Un lenguaje basado en prototipos?</h2>
+            </div>
+
+            <p class="container__text">
+                JavaScript es a menudo descrito como un <span class="example">lenguaje basado en prototipos</span> para proporcionar mecanismos de herencia, los objetos pueden tener un <span class="example">objeto prototipo</span>, el cual actúa como un objeto plantilla que hereda métodos y propiedades.
+            </p>
+
+            <p class="container__text">
+                Un objeto prototipo del objeto puede tener a su vez otro objeto prototipo, el cual hereda métodos y propiedades, y asi sucesivamente. Esto es conocido con frecuencia como la <span class="example">cadena de prototipos</span>, y explica por que objetos diferentes pueden tener disponibles propiedades y métodos definidos en otros objetos.
+            </p>
+
+            <p class="container__text">
+                En JavaScript, se establece un enlace entre la instancia del objeto y su prototipo, y las propiedades y métodos son encontrados recorriendo la cadena de prototipos.
+            </p>
+
+            <p class="container__text">
+                Veamos un ejemplo donde creamos una función constructora:
+            </p>
+
+            <pre>
+                <code>
+function Persona(nombre, apellido, edad) {
+    this.nombre = nombre
+    this.apellido = apellido
+    this.edad = edad
+
+    this.show = function () {
+        console.log(`Hola ${this.nombre} ${this.apellido} con edad de ${this.edad}`)
+    }
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Hemos creado una función constructora llamada <span class="example">Persona()</span> que recibe 3 parámetros llamados <span class="example">"nombre"</span>, <span class="example">"apellido"</span> y <span class="example">"edad"</span>. Nótese que hacemos uso de la palabra reservada <span class="example">this</span> haciendo referencia al contexto en donde nos encontramos. Seguido hemos definido una función que nos muestra por consola los datos que le hemos pasado como parámetros.
+            </p>
+
+            <P class="container__text">
+                Ahora, partiendo de esta función constructora podemos crear instancias de un objeto como este, veamos como podemos hacerlo:
+            </P>
+
+            <pre>
+                <code>
+const persona1 = new Persona("Ulises", "Flores", 24)
+const persona2 = new Persona("Erlinda", "de Flores", 23)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para poder hacer instancia de un objeto hacemos uso de la palabra reservada <span class="example">new</span> seguido del nombre de la función constructora pasando valores a los parámetros. En este ejemplo hemos creado dos instancias llamadas <span class="example">"persona1"</span> y <span class="example">"persona2"</span>.
+            </p>
+
+            <p class="container__text">
+                Una vez hecho la instancia de nuestro objeto, podemos acceder por medio de la instancia a sus propiedades y métodos, veamos como:
+            </p>
+
+            <pre>
+                <code>
+// accediendo a métodos
+persona1.show()
+persona2.show()
+// accediendo a propiedades
+console.log(`Acceso a propiedad de ${persona1.nombre}`)
+console.log(`Acceso a propiedad de ${persona2.nombre}`)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Accedemos al método llamado <span class="example">show()</span> de ambas instancias, y también accedemos a propiedades de ambas instancias, la propiedad a la que accedemos en este ejemplo es a <span class="example">"nombre"</span>. Teniendo como resultado lo siguiente:
+            </p>
+
+            <img src="../assets/img/prototipos-1.png" alt="captura resultado ejemplo prototipos">
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/prototipos-poo.js"></script>
+    
+</body>
+</html>
