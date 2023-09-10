@@ -95,6 +95,186 @@ console.log(`Acceso a propiedad de ${persona2.nombre}`)
         </section>
 
         <section class="container">
+            <div class="container__title">
+                <h2>Analizando</h2>
+            </div>
+
+            <p class="container__text">
+                Ya sabemos como crear una función constructora y como esta tiene un objeto prototipo, el cual hereda métodos y propiedades al hacer instancia de ella. Veremos otro ejemplo:
+            </p>
+
+            <pre>
+                <code>
+function Transporte(ruedas, tipo) {
+    this.ruedas = ruedas
+    this.tipo = tipo
+
+    this.terrestre = function () {
+        if (ruedas) {
+            console.log(`Tiene ruedas`)  
+        } else {
+            console.log(`NO tiene ruedas`)
+        }
+        console.log(`Medio de transporte terrestre`)
+    }
+
+    this.aereo = function () {
+        if (ruedas) {
+            console.log(`Tiene ruedas`)  
+        } else {
+            console.log(`NO tiene ruedas`)
+        }
+        console.log(`Medio de transporte aéreo`)
+    }
+
+    this.acuatico = function () {
+        if (ruedas) {
+            console.log(`Tiene ruedas`)  
+        } else {
+            console.log(`NO tiene ruedas`)
+        }
+        console.log(`Medio de transporte acuático`)
+    }
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Hemos creado una función constructora llamada <span class="example">"Transporte"</span> que recibe dos parámetros, dentro de ellas tenemos métodos y propiedades. Los métodos creados hacen referencia al tipo de transporte que creemos al crear instancia de la función constructora.
+            </p>
+
+            <pre>
+                <code>
+const auto = new Transporte(true, "vehiculo sedan")
+const helicoptero = new Transporte(false, "aeronave de helices")
+const barco = new Transporte(false, "nave de mar")
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Hemos creado 3 instancias para cada medio de transporte <span class="example">auto</span>, <span class="example">helicoptero</span> y <span class="example">barco</span>. Mostremos en consola cada instancia y veamos que nos muestra por cada instancia:
+            </p>
+
+            <pre>
+                <code>
+console.log(auto)
+console.log(helicoptero)
+console.log(barco)
+                </code>
+            </pre>
+
+            <img src="../assets/img/prototipos-2.png" alt="captura resultado ejemplo prototipo">
+
+            <p class="container__text">
+                Por cada instancia podemos ver que tenemos sus dos propiedades <span class="example">"ruedas"</span> y <span class="example">"tipo"</span> y sus 3 métodos llamados <span class="example">terrestre()</span>, <span class="example">aereo()</span> y <span class="example">acuatico()</span>.
+            </p>
+
+            <img src="../assets/img/prototipos-3.png" alt="captura resultado ejemplo prototipo">
+
+            <p class="container__text">
+                Ahora bien, analizando cada instancia, los métodos han sido creados para cada instancia según el tipo de transporte que sea, es decir, si el tipo de transporte es un auto se hará uso del método llamado <span class="example">terrestre()</span>, si el tipo de transporte es un helicóptero se hará uso del método llamado <span class="example">aereo()</span> y si el tipo de transporte es un barco se hará uso del método llamado <span class="example">acuatico()</span>. Entonces lo que buscamos es que por cada instancia no se incluyan los métodos que no van de acuerdo al tipo de transporte, esto quiere decir que al declarar métodos dentro de nuestra función constructora, cada vez que hagamos instancia de ella siempre se incluirán y duplicaríamos métodos que no se utilizarían y esto afectara al rendimiento de nuestra aplicación web.
+            </p>
+
+            <p class="container__text">
+                Pero, como podemos mejorar esto con buenas practicas? Para los métodos debemos crearlos fuera de la función constructora colgados de su prototipo, y no crearlos dentro de la función constructora, es decir, en la función constructora solo dejar las propiedades que usaríamos.
+            </p>
+
+            <p class="container__text">
+                Nuestra función constructora nos quedaría de la siguiente manera:
+            </p>
+
+            <pre>
+                <code>
+function Transporte(ruedas, tipo) {
+    this.ruedas = ruedas
+    this.tipo = tipo
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Al mostrar por consola cada instancia podemos observar que ya no aparecen los métodos que habíamos creado:
+            </p>
+
+            <img src="../assets/img/prototipos-4.png" alt="captura resultado ejemplo prototipos">
+
+            <p class="container__text">
+                Pero, y como podemos crear los métodos? Los métodos debemos crearlos colgando de su prototipo, es decir, nosotros creamos una función constructora y a partir de esta creamos instancias, entonces se establece un enlace entre la instancia del objeto y su propiedad <span class="example">__proto__</span> sobre el constructor.
+            </p>
+
+            <p class="container__text">
+                Veamos una imagen para poder entender un poco mas:
+            </p>
+
+            <img src="../assets/img/prototipos-5.png" alt="captura resultado ejemplo prototipos">
+
+            <p class="container__text">
+                En la imagen, donde nos indica una flecha con color azul y subrayado en amarillo, esa es la propiedad <span class="example">__proto__</span> sobre el constructor. Y lo que esta subrayado con color verde, ese es el constructor, osea de nuestra función constructora con el nombre que le declaramos.
+            </p>
+
+            <p class="container__text">
+                Ahora ya podemos entender cuando tratamos de decir que crearemos los métodos colgando de su prototipo y para eso utilizamos la notación del punto y la palabra reservada <span class="example">prototype</span> quedando un poco asi <span class="example">funcionConstructora.prototype.nombreMetodo = function () { ... }</span>.
+            </p>
+
+            <p class="container__text">
+                Definiendo los métodos colgando de su prototipo:
+            </p>
+
+            <pre>
+                <code>
+Transporte.prototype.terrestre = function () {
+    if (this.ruedas) {
+        console.log(`Tiene ruedas`)  
+    } else {
+        console.log(`NO tiene ruedas`)
+    }
+    console.log(`Medio de transporte terrestre`)
+}
+
+Transporte.prototype.aereo = function () {
+    if (this.ruedas) {
+        console.log(`Tiene ruedas`)  
+    } else {
+        console.log(`NO tiene ruedas`)
+    }
+    console.log(`Medio de transporte aéreo`)
+}
+
+Transporte.prototype.acuatico = function () {
+    if (this.ruedas) {
+        console.log(`Tiene ruedas`)  
+    } else {
+        console.log(`NO tiene ruedas`)
+    }
+    console.log(`Medio de transporte acuático`)
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Asi definimos los métodos al prototipo sobre el constructor. Asi evitamos que a cada instancia se repitan los métodos y asi poder usar el método que solamente vamos a invocar mejorando el rendimiento de la aplicación web y realizando buenas practicas.
+            </p>
+
+            <img src="../assets/img/prototipos-6.png" alt="captura resultado ejemplo prototipos">
+
+            <p class="container__text">
+                Solo nos queda volver hacer instancia e invocar el método que corresponda a cada una de ellas.
+            </p>
+
+            <pre>
+                <code>
+const auto = new Transporte(true, "vehiculo sedan")
+const helicoptero = new Transporte(false, "aeronave de helices")
+const barco = new Transporte(false, "nave de mar")
+
+auto.terrestre()
+helicoptero.aereo()
+barco.acuatico()
+                </code>
+            </pre>
+        </section>
+
+        <section class="container">
             <a href="../index.html" class="container__link">Volver a inicio</a>
         </section>
     </main>
