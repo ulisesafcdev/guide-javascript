@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Clases y Herencia</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#clases-y-herencia</h1>
+        <p class="header__text">
+            En esta sección veremos como son las clases y la herencia en JavaScript, no son nada mas que una mejora sintáctica sobre la herencia basada en prototipos de JavaScript.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>#clases</h2>
+            </div>
+
+            <p class="container__text">
+                Las clases de JavaScript, introducidas en <span class="example">ECMAScript 2015</span>, son una mejora sintáctica sobre la herencia basada en prototipos de JavaScript. La sintaxis de las clases no introduce un nuevo modelo de herencia orientado a objetos en JavaScript. Las clases de JavaScript proveen una sintaxis mucho mas clara y simple para crear objetos y lidiar con la herencia.
+            </p>
+
+            <p class="container__text">
+                Las clases son <span class="example">"funciones especiales"</span>, como las <span class="example">"funciones expresadas"</span> y <span class="example">"funciones declaradas"</span>.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h3>Declaración de clases</h3>
+            </div>
+
+            <p class="container__text">
+                Una manera de definir una clase es mediante una <span class="example">"declaración de clase"</span>. Para declarar una clase, se utiliza la palabra reservada <span class="example">class</span> y un nombre para la clase.
+            </p>
+
+            <pre>
+                <code>
+class Persona {
+
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para inicializar un objeto creado con una clase, se utiliza el método <span class="example">constructor()</span>, es un método especial para crear e inicializar un objeto. Solo puede haber un método especial con el nombre <span class="example">"constructor"</span> en una clase. Un <span class="example">constructor()</span> puede usar la palabra reservada <span class="example">super</span> para llamar al constructor de una superclase.
+            </p>
+
+            <pre>
+                <code>
+class Persona {
+
+    constructor(nombre, apellido, edad, genero) {
+        this.nombre = nombre
+        this.apellido = apellido
+        this.edad = edad
+        this.genero = genero
+    }
+
+}
+                </code>
+            </pre>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h3>Métodos prototipo</h3>
+            </div>
+
+            <pre>
+                <code>
+class Persona {
+
+    constructor(nombre, apellido, edad, genero) {
+        this.nombre = nombre
+        this.apellido = apellido
+        this.edad = edad
+        this.genero = genero
+    }
+
+    caminar() {
+        console.log(`${this.nombre} - caminando...`)
+    }
+    
+    correr() {
+        console.log(`${this.nombre} - corriendo...`)
+    }
+    
+    hablar() {
+        console.log(`${this.nombre} - hablando...`)
+    }
+    
+    comer() {
+        console.log(`${this.nombre} - comiendo...`)
+    }
+
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Las clases nos permiten que los métodos se queden en el prototipo de la clase al momento de hacer instancia de ella.
+            </p>
+
+            <pre>
+                <code>
+const jorge = new Persona("Jorge", "Dindo", 22, true)
+
+jorge.caminar()
+jorge.correr()
+jorge.hablar()
+jorge.comer()
+                </code>
+            </pre>
+
+            <img src="../assets/img/clases-y-herencia-1.png" alt="captura resultado ejemplo clases">
+
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>#herencia</h2>
+            </div>
+
+            <p class="container__text">
+                Cuando usamos clases y queremos heredar de ella, se utiliza la palabra reservada <span class="example">extends</span>, para heredar sus propiedades y métodos.
+            </p>
+
+            <pre>
+                <code>
+class Empleado extends Persona {
+
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para poder llamar métodos y propiedades del objeto padre del cual estamos heredando, se utiliza la palabra reservada <span class="example">super</span>.
+            </p>
+
+            <pre>
+                <code>
+class Empleado extends Persona {
+
+    constructor(nombre, apellido, edad, genero, horario, salario) {
+        super(nombre, apellido, edad, genero)
+        this.horario = horario
+        this.salario = salario
+    }
+    
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Al constructor pasamos los parámetros de la clase padre, y los parámetros propios de la clase que hereda, con <span class="example">super</span> pasamos los parámetros de la clase padre para llamar a su constructor.
+            </p>
+
+            <p class="container__text">
+                Asi mismo esta puede tener sus propios métodos y sobre escribir las sentencias dentro de una función heredada:
+            </p>
+
+            <pre>
+                <code>
+class Empleado extends Persona {
+
+    constructor(nombre, apellido, edad, genero, horario, salario) {
+        super(nombre, apellido, edad, genero)
+        this.horario = horario
+        this.salario = salario
+    }
+
+    trabajar() {
+        console.log(`${this.nombre} - trabajando...`)
+    }
+
+    hablar() {
+        console.log(`${this.nombre} - hablando en el trabajo...`)
+    }
+
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Creamos una instancia de <span class="example">"Empleado"</span> y mostremos por consola:
+            </p>
+
+            <pre>
+                <code>
+const melvin = new Empleado("Melvin", "Dindo", 27, true, "10 a 7", 820.00)
+
+console.log(melvin)
+                </code>
+            </pre>
+
+            <img src="../assets/img/clases-y-herencia-2.png" alt="captura resultado ejemplo herencia">
+
+            <p class="container__text">
+                Analicemos, en la imagen tenemos a <span class="example">"Empleado"</span> que es la clase que estamos heredando, con la flecha de color azul indica que su prototipo es <span class="example">"Persona"</span> ya que estamos heredando de ella, con color azul subrayado podemos ver solo los métodos que pertenecen a <span class="example">"Empleado"</span>.
+            </p>
+
+            <p class="container__text">
+                Continuando, en la imagen también tenemos a <span class="example">"Persona"</span> que es la clase padre, con la flecha de color amarillo indica que su prototipo es un <span class="example">Object</span> ya que esta es la <span class="example">clase padre</span> de la cual heredan las demás clases, con color amarillo subrayado podemos ver solo los metodos que pertenecen a <span class="example">"Persona"</span>. 
+            </p>
+
+            <p class="container__text">
+                En conclusion, al heredar con clases, lo que hace JavaScript es un arreglo sintáctico que nos permite que la herencia sea mas ordenada y menos compleja, como podemos ver en la imagen, al heredar de una clase, los métodos cuelgan del prototipo del objeto al que pertenecen, como es el caso de <span class="example">"Empleado"</span> que su prototipo es <span class="example">"Persona"</span> y este a la vez tiene su prototipo nativo <span class="example">Object</span> con sus propios métodos y propiedades al igual que <span class="example">"Empleado"</span>.
+            </p>
+
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/clases-y-herencia.js"></script>
+    
+</body>
+</html>
