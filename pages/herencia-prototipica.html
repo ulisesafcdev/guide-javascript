@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Herencia prototipica</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#herencia-prototipica</h1>
+        <p class="header__text">
+            En lo que a herencia se refiere, JavaScript solo tiene una estructura: objetos. Cada objeto tiene una propiedad privada referida como su <span class="example">Prototype</span> que mantiene un enlace a otro objeto llamado su <span class="example">"prototipo"</span>. Ese objeto <span class="example">"prototipo"</span> tiene su propio <span class="example">prototipo</span>, y asi sucesivamente hasta que alcanza un objeto cuyo <span class="example">prototipo</span> es <span class="example">null</span>. Por definición, <span class="example">null</span> no tiene <span class="example">"prototipo"</span>, y actúa como el enlace final de esta <span class="example">cadena de prototipos</span>.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Introducción</h2>
+            </div>
+
+            <p class="container__text">
+                A pesar de que a menudo esto se considera como una de las principales debilidades de JavaScript, el modelo de herencia de prototipos es de hecho mas potente que el modelo clásico. Por ejemplo, es bastante simple construir un modelo clásico a partir de un modelo de prototipos.
+            </p>
+
+            <p class="container__text">
+                JavaScript no tiene <span class="example">"métodos"</span> en la forma que los lenguajes basados en <span class="example">"clases"</span> los define. En JavaScript, cualquier función puede agregarse a un objeto como una propiedad. Una función heredada se comporta como cualquier otra propiedad.
+            </p>
+        </section>
+
+        <section class="container">
+
+            <p class="container__text">
+                Veamos un ejemplo:
+            </p>
+
+            <pre>
+                <code>
+function Persona(nombre, apellido, edad, genero) {
+    this.nombre = nombre
+    this.apellido = apellido
+    this.edad = edad
+    this.genero = genero
+}
+
+Persona.prototype.caminar = function () {
+    console.log(`${this.nombre}: Caminando...`)
+}
+
+Persona.prototype.hablar = function () {
+    console.log(`${this.nombre}: Hablando...`)
+}
+
+Persona.prototype.comer = function () {
+    console.log(`${this.nombre}: Comiendo`)
+}
+
+Persona.prototype.dormir = function () {
+    console.log(`${this.nombre}: Durmiendo...`)
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Creamos una función constructora llamada <span class="example">"Persona"</span> que recibe 4 parámetros, ademas definimos métodos a su prototipo de la manera correcta. Hasta aquí nada nuevo.
+            </p>
+
+            <pre>
+                <code>
+const persona1 = new Persona("Ulises", "Flores", 24, true)
+
+persona1.caminar()
+persona1.hablar()
+persona1.comer()
+persona1.dormir()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Creamos una instancia llamada <span class="example">"persona1"</span> con sus parámetros correspondientes, e invocamos los métodos que este tiene en su prototipo, teniendo como resultado en consola:
+            </p>
+
+            <img src="../assets/img/herencia-prototipica-1.png" alt="captura resultado ejemplo herencia prototipica">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Heredando métodos con la cadena de prototipos</h2>
+            </div>
+
+            <pre>
+                <code>
+function Empleado(nombre, apellido, edad, genero, horario, salario) {
+    this.super = Persona
+    this.super(nombre, apellido, edad, genero)
+    this.horario = horario
+    this.salario = salario
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para heredar, creamos otra función constructora llamada <span class="example">Empleado</span>, esta comparte las mismas propiedades y métodos de <span class="example">Persona</span>. Como parámetros recibe los mismos de <span class="example">Persona</span> y parámetros propios de <span class="example">Empleado</span>.
+            </p>
+
+            <p class="container__text">
+                Para heredar las mismas propiedades y métodos de <span class="example">Persona</span>, escribimos <span class="example">this.super = Persona</span>, primero definimos y luego asignamos los parametros de <span class="example">Persona</span> con <span class="example">this.super(nombre, apellido, edad, genero)</span>, hacemos lo mismo con los parametros de <span class="example">Empleado</span>.
+            </p>
+
+            <p class="container__text">
+                Hasta aquí hemos iniciado con la herencia prototipica dentro de la función constructora que va heredar de <span class="example">Persona</span>. Para terminar de heredar escribimos lo siguiente: 
+            </p>
+
+            <pre>
+                <code>
+Empleado.prototype = new Persona()
+Empleado.prototype.constructor = Persona
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Lo que hacemos con estas lineas es crear una instancia de <span class="example">Persona</span> basada en su prototipo. También en su propiedad constructor inicializamos los parámetros de <span class="example">Persona</span>. Con esto ya podemos acceder a los métodos que hemos heredado de <span class="example">Persona</span>. Solo nos queda hacer una nueva instancia de <span class="example">Empleado</span> para acceder a los métodos heredados.
+            </p>
+
+            <pre>
+                <code>
+const persona2 = new Empleado("Alexis", "Soriano", 2, true, "9 a 9", 800.00)
+
+persona2.hablar()
+persona2.trabajar()
+persona2.comer()
+                </code>
+            </pre>
+
+            <img src="../assets/img/herencia-prototipica-2.png" alt="captura resultado ejemplo herencia prototipica">
+
+            <p class="container__text">
+                A la misma vez podemos crear métodos propios de <span class="example">Empleado</span>:
+            </p>
+
+            <pre>
+                <code>
+Empleado.prototype.trabajar = function () {
+    console.log(`${this.nombre}: Trabajando...`)
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                También podemos sobre escribir una función cambiando su contenido:
+            </p>
+
+            <pre>
+                <code>
+Empleado.prototype.comer = function () {
+    console.log(`${this.nombre}: Comiendo almuerzo`)
+}
+                </code>
+            </pre>
+
+            <img src="../assets/img/herencia-prototipica-3.png" alt="captura resultado ejemplo herencia prototipica">
+
+            <p class="container__text">
+                En el proximo tema, veremos un set de palabras que introdujo <span class="example">ECMAScript 2015</span>, un nuevo set de palabras reservadas que implementan clases. Aunque estos constructores lucen mas familiares para los desarrolladores de lenguajes basados en clases, aun asi no son clases. JavaScript sigue estando basado en prototipos. Los nuevos keywords incluyen <span class="example">class</span>, <span class="example">constructor</span>, <span class="example">static</span>, <span class="example">extends</span> y <span class="example">super</span>.
+            </p>
+
+            <p class="container__text">
+                Es esencial entender el modelo de prototipado por instancias antes de escribir código complejo que hace uso de esto.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/herencia-prototipica.js"></script>
+    
+</body>
+</html>
