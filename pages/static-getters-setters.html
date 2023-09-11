@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Métodos static, get, set</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#static-getters-setters</h1>
+        <p class="header__text">
+            Son utilizados en métodos dentro de una clase, son parte de un nuevo set de azúcar sintáctico que vinieron en <span class="example">ECMAScript 2015</span>.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <div class="container__title">
+                <h2>#static</h2>
+            </div>
+
+            <p class="container__text">
+                La palabra clave <span class="example">static</span> define un método estático para una clase.
+            </p>
+
+            <p class="container__text">
+                Los métodos estáticos son llamados sin instanciar su clase. Son habitualmente utilizados para crear funciones para una aplicación.
+            </p>
+
+            <pre>
+                <code>
+class Suma {
+
+    static sumar(a, b) {
+        return a + b
+    }
+
+}
+
+let resultadoSuma = Suma.sumar(12, 8)
+
+console.log(`Resultado: ${resultadoSuma}`)
+                </code>
+            </pre>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>#get & #set</h2>
+            </div>
+
+            <p class="container__text">
+                Los métodos <span class="example">get</span> & <span class="example">set</span> nos permiten establecer y obtener los valores de atributos de una clase.
+            </p>
+
+            <pre>
+                <code>
+class Perro {
+
+    constructor(nombre, color) {
+        this.nombre = nombre
+        this.color = color
+        this.raza = null
+    }
+
+    imprimir() {
+        console.log(`Nombre del perro: ${this.nombre}`)
+        console.log(`Color del perro: ${this.color}`)
+    }
+
+    // metodo setter
+    set setRaza(raza) {
+        this.raza = raza
+    }
+
+    // metodo getter
+    get getRaza() {
+        return this.raza
+    }
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En el ejemplo anterior, hemos definido métodos <span class="example">get</span> y <span class="example">set</span> con los nombres <span class="example">setRaza()</span> y <span class="example">getRaza()</span>.
+            </p>
+
+            <p class="container__text">
+                Para establecer un valor con <span class="example">set</span> se hace de la siguiente manera:
+            </p>
+
+            <pre>
+                <code>
+const cabito = new Perro("Cabito", "Blanco y Negro")
+
+cabito.setRaza = "Pastor Alemán"
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Primero hacemos una instancia de la clase, luego para establecer un valor con <span class="example">set</span> le asignamos un valor con el símbolo <span class="example">=</span>, asi como asignamos el valor a una variable.
+            </p>
+
+            <p class="container__text">
+                Para obtener un valor con <span class="example">get</span> se hace de la siguiente manera:
+            </p>
+
+            <pre>
+                <code>
+let raza = cabito.getRaza
+                </code>
+            </pre>
+
+            <p class="container__text">
+                El método <span class="example">get</span> nos retorna un valor, por eso creamos una variable para almacenarlo ahi. Para invocar al metodo <span class="example">get</span> se hace con la notación del punto, pero, sin los paréntesis <span class="example">()</span>.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/static-getters-setters.js"></script>
+    
+</body>
+</html>
