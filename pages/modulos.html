@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Módulos</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#módulos</h1>
+        <p class="header__text">
+            Los módulos en JavaScript se utilizan para <strong>exportar</strong> e <strong>importar</strong> funciones, objetos o tipos de datos primitivos del modulo que se ha creado para ser utilizado por otros programas.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <p class="container__text">
+                Al crear módulos se utilizan las sentencias <span class="example">export</span> para exportar funciones, objetos, entre otros; también, se utiliza la sentencia <span class="example">import</span> para importar las sentencias que hemos exportado desde un módulo.
+            </p>
+
+            <p class="container__text">
+                Veamos la definición de cada una de estas dos sentencias con ejemplos sencillos.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Sentencia <span class="example__title">export</span></h2>
+            </div>
+            <p class="container__text">
+                La declaración <span class="example">export</span> se utiliza al crear módulos de JavaScript para exportar funciones, objetos o tipos de dato primitivos del módulo para que puedan ser utilizados por otros programas con la sentencia <span class="example">import</span>.
+            </p>
+            <p class="container__text">
+                Los módulos exportados están en <span class="example">strict mode</span> tanto si se declaran asi como si no. La sentencia <span class="example">export</span> no puede ser utilizada en scripts embebidos.
+            </p>
+            <p class="container__text">
+                Existen dos tipos diferentes de exportación, <strong>nombrada</strong> y <strong>por defecto</strong>. Se  pueden tener varias exportaciones nombradas por módulo pero solo una exportación por defecto.
+            </p>
+
+            <article>
+                <p>
+                    <strong>Nota:</strong> el módulo donde tengamos las estructuras o tipo de datos que estemos exportando deben estar en un archivo por separado, por ejemplo: <span class="example">../ js / modules / mis-modulos.js</span>
+                </p>
+            </article>
+
+            <pre>
+                <code>
+// exportando una constante                    
+export const PI = 3.1416
+// exportando una variable
+export let usuario = "ulisesafcdev"
+// exportando un objeto
+export let datos = {
+    pais: "El salvador",
+    capital: "San Salvador"
+}
+// exportando un arreglo
+export let lenguajes = ["html", "css", "javascript", "php", "mysql"]
+// exportando por defecto una funcion
+export default function saludo () {
+    console.log(`Exportando modulos...`)
+}
+                </code>
+            </pre>
+
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Sentencia <span class="example__title">import</span></h2>
+            </div>
+
+            <p class="container__text">
+                La sentencia <span class="example">import</span> se usa para importar funciones que han sido exportadas desde un módulo externo.
+            </p>
+
+            <article>
+                <p>
+                    <strong>Nota:</strong> Cuando vayamos a importar sentencias o estructuras de un archivo externo, el archivo donde estemos importando, ese sera el que debamos incluir en nuestra pagina, dentro de la etiqueta <span class="example">script</span> con su ruta <strong>source</strong> <span class="example">src = "../js/modulos.js"</span> agregando el atributo <strong>type</strong> indicando uso de módulos <span class="example">type = "module"</span>.
+                </p>
+            </article>
+
+            <pre>
+                <code>
+// importando 
+import saludo, { PI, usuario, datos, lenguajes } from "./modules/mismodulos.js"
+
+// calculando diametro con la constante PI exportada
+let diametro =  12 / PI
+// mostrando en consola variable USUARIO exportada
+console.log(`Hola ${usuario} el diametro del circulo es ${diametro}`)
+
+// recorriendo el objeto exportado
+for (const key in datos) {
+    console.log(`${key}: ${datos[key]}`)
+}
+
+// recorriendo el arreglo exportado
+for (const i of lenguajes) {
+    console.log(`Lenguaje: ${i}`)
+}
+
+// invocando funcion exportada por default
+saludo()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Teniendo como resultado lo mismo como si no estuviéramos usando módulos:
+            </p>
+
+            <img src="../assets/img/modulos-1.png" alt="captura resultado ejemplo módulos import">
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Ejemplo</h2>
+            </div>
+            <p class="container__text">
+                En este ejemplo crearemos un modulo donde exportaremos funciones basándose en operaciones aritméticas, es un ejemplo bastante sencillo solo para ver como es el comportamiento y uso de módulos.
+            </p>
+
+            <p class="container__text">
+                Primero, crearemos un archivo donde tendremos las funciones con las operaciones aritméticas básicas, recordemos que los módulos deben estar en una carpeta aparte en archivo por separado, por ejemplo, <span class="example">../ js / modules / operaciones-aritmeticas.js</span>, ahi crearemos nuestras funciones que exportaremos:
+            </p>
+
+            <pre>
+                <code>
+function sumar(a, b) {
+    return a + b
+}
+
+function restar(a, b) {
+    return a - b
+}
+
+function dividir(a, b) {
+    return a / b
+}
+
+function multiplicar(a, b) {
+    return a * b
+}
+
+export const operacionesAritmeticas = {
+    sumar,
+    restar,
+    dividir,
+    multiplicar
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Hemos declarado 4 funciones llamadas <span class="example">sumar()</span>, <span class="example">restar()</span>, <span class="example">dividir()</span> y <span class="example">multiplicar()</span>. Estas 4 funciones las hemos exportado en un objeto llamado <span class="example">operacionesAritmeticas</span> (tambien podemos exportar estructuras o funciones en forma de objeto como lo es este ejemplo).
+            </p>
+
+            <p class="container__text">
+                El archivo que incluiremos en nuestra pagina, ahi importaremos de la siguiente manera:
+            </p>
+
+            <pre>
+                <code>
+import { operacionesAritmeticas as operaciones } from "./modules/operaciones-aritmeticas.js";
+
+let suma = operaciones.sumar(12, 8)
+let resta = operaciones.restar(18, 5)
+let division = operaciones.dividir(69, 3)
+let multiplicacion = operaciones.multiplicar(12, 5)
+
+console.log(`Resultado Suma: ${suma}`)
+console.log(`Resultado Resta: ${resta}`)
+console.log(`Resultado Division: ${division}`)
+console.log(`Resultado Multiplicacion: ${multiplicacion}`)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Vemos que hemos importado las funciones en forma de objeto, pero, hemos usado la palabra <span class="example">as</span>, este indica un alias que podemos dar refiriéndonos (en este caso al objeto) para poder llamarlo por ese nombre, osea <span class="example">"operaciones"</span> y asi llamar a cada función según la operación aritméticas que queramos realizar.
+            </p>
+
+            <p class="container__text">
+                Teniendo como resultado en consola lo siguiente:
+            </p>
+
+            <img src="../assets/img/modulos-2.png" alt="captura resultado ejemplo módulos">
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/modulos.js" type="module"></script>
+    
+</body>
+</html>
