@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Funciones Anónimas</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#funciones-anónimas-autoejecutables</h1>
+        <p class="header__text">
+            Son conocidas como <strong>funciones anónimas autoejecutables</strong>, son funciones que se ejecutan tan pronto como se definen.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <div class="container__title">
+                <h2>IIFE: Expresión de función ejecutada inmediatamente</h2>
+            </div>
+            <p class="container__text">
+                Las expresiones de función ejecutadas inmediatamente (IIFE por su sigla en ingles), es un patron de diseño también conocido como <strong>función autoejecutable</strong> y se compone por dos partes. La primera es la función anónima con alcance léxico encerrado por el operador de agrupación <span class="example">()</span>. Esto impide accesar variables fuera del IIFE, asi como contaminar el alcance (scope) global.
+            </p>
+
+            <p class="container__text">
+                La segunda parte crea la expresión de función cuya ejecución es inmediata <span class="example">()</span>, siendo interpretado directamente en el engine de JavaScript.
+            </p>
+
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Sintaxis</h2>
+            </div>
+
+            <p class="container__text">
+                Podemos crear una función autoejecutable en forma de función flecha:
+            </p>
+
+            <pre>
+                <code>
+(() => {
+
+})()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Podemos crear una función autoejecutable en forma de función anónima:
+            </p>
+
+            <pre>
+                <code>
+(function() {
+
+})()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En ambos casos podemos mandar parámetros, veamos un ejemplo en forma de función flecha:
+            </p>
+
+            <pre>
+                <code>
+((nombre) => {
+    console.log(`Bienvenido ${nombre}`)
+})("Ulises Flores");
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Veamos un ejemplo mandando parámetros en forma de función anónima:
+            </p>
+
+            <pre>
+                <code>
+(function(usuario) {
+    console.log(`Hola y bienvenido ${usuario}`)
+})("ulisesafcdev");
+                </code>
+            </pre>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/funciones-anonimas.js"></script>
+    
+</body>
+</html>
