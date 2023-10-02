@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Temporizadores</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#temporizadores</h1>
+        <p class="header__text">
+            Los temporizadores (timers) son funciones especiales que permiten ejecutar una función que realice ciertas tareas después de un determinado tiempo. Por un lado, los temporizadores <span class="example">timeout</span> ejecutan cuando pasa un cierto tiempo, mientras que los temporizadores <span class="example">interval</span> se ejecutan constantemente cada cierto tiempo.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <div class="container__title">
+                <h2>La función <span class="example__title">setTimeout()</span></h2>
+            </div>
+            <p class="container__text">
+                Esta función nos pide dos parámetros: una función a ejecutarse y el tiempo en milisegundos que debemos esperar antes de que se ejecute.
+            </p>
+
+            <div class="container__title">
+                <h3>Primera forma</h3>
+            </div>
+
+            <pre>
+                <code>
+console.log(`Ejecucion #1`)
+
+function ejecucionDos(){
+    console.log(`Ejecucion #2`)
+}
+
+setTimeout(ejecucionDos, 3000)
+
+console.log(`Ejecucion #3`)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En este ejemplo, primero hemos mostrado un mensaje en consola con el mensaje <span class="example">"Ejecucion #1"</span>, luego hemos definido una función con el nombre de <span class="example">ejecucionDos()</span> el cual nos mostrara el mensaje de <span class="example">"Ejecucion #2"</span>, esta función mandaremos como parámetro a la función <span class="example">setTimeout()</span>, seguido, invocamos el temporizador, mandando como parámetro la función que hemos definido, adicional de 3000 milisegundos, que es lo que se tardara en ejecutarse la función, por ultimo, mostramos un mensaje por consola con el mensaje de <span class="example">"Ejecucion #3"</span>. 
+            </p>
+
+            <p class="container__text">
+                Veamos el resultado:
+            </p>
+
+            <img src="../assets/img/temporizadores-1.png" alt="captura resultado ejemplo definicion temporizador setTimeout">
+
+            <p class="container__text">
+                Como resultado tenemos los mensajes <span class="example">"Ejecucion #1"</span> y <span class="example">"Ejecucion #3"</span> sombreado en anaranjado, indicando que son las primeras instrucciones en ejecutarse, a comparación de la ejecución que hemos definido con la función <span class="example">setTimeout()</span>, después de haber pasado 3 segundos como lo definimos en el temporizador, hasta entonces se ejecuta la función <span class="example">ejecucionDos()</span> mostrándonos el mensaje <span class="example">"Ejecucion #2"</span> sombreado en amarillo.
+            </p>
+
+            <div class="container__title">
+                <h3>Segunda forma función anónima</h3>
+            </div>
+
+            <pre>
+                <code>
+console.log(`Ejecucion #1`)
+
+setTimeout(function () {
+    console.log(`Ejecucion #2`)
+}, 3000)
+
+console.log(`Ejecucion #3`)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En el mismo ejemplo, en vez de crear una función y luego mandarla como parámetro, podemos definir en <span class="example">setTimeout()</span> una función anónima y ahi definir lo que queremos que se ejecute, seguido del tiempo en milisegundos que queremos que se tarde en ejecutarse.
+            </p>
+
+            <p class="container__text">
+                El resultado sigue siendo el mismo.
+            </p>
+
+            <div class="container__title">
+                <h3>Tercera forma función flecha</h3>
+            </div>
+
+            <pre>
+                <code>
+console.log(`Ejecucion #1`)
+
+setTimeout(() => console.log(`Ejecucion #2`), 3000)
+
+console.log(`Ejecucion #3`)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En el mismo ejemplo, al igual que el ejemplo anterior, podemos pasar como parámetro una función flecha, quedando el código mas limpio y mas corto.
+            </p>
+
+            <p class="container__text">
+                El resultado es el mismo.
+            </p>
+        </section>
+
+        <section class="container">
+
+            <div class="container__title">
+                <h2>La función <span class="example__title">setInterval()</span></h2>
+            </div>
+
+            <p class="container__text">
+                Como puedes ver, la función <span class="example">setTimeout()</span> no es el único temporizador. La función <span class="example">setInterval()</span> ejecuta una función cada cierto tiempo. Como vimos anteriormente, <span class="example">setTimeout()</span> espera el numero indicado de segundos para ejecutar la función proporcionada por parámetro, y una vez ejecutada termina el temporizador.
+            </p>
+
+            <p class="container__text">
+                Por otro lado, la función <span class="example">setInterval()</span> espera el numero indicado de segundos y ejecuta la función proporcionada, una vez hecho, vuelve a repetir el proceso una y otra vez.
+            </p>
+
+            <pre>
+                <code>
+setInterval(() => {
+    console.log(`Teoria y practica de JavaScript`)
+}, 2000);
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En este ejemplo, usando la función <span class="example">setInterval()</span> ejecutara el mensaje que tiene dentro y lo mostrara por consola cada 2000 milisegundos, osea, cada 2 segundos.
+            </p>
+            
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Detener temporizadores</h2>
+            </div>
+
+            <p class="container__text">
+                Aunque no lo hemos mencionado anteriormente, tanto el temporizador <span class="example">setTimeout()</span> como <span class="example">setInterval()</span> devuelven un numero al ejecutarse. Este numero es un identificador único del temporizador. Es util cuando queremos detener prematuramente el temporizador y cancelar inmediatamente la ejecución del mismo.
+            </p>
+
+            <p class="container__text">
+                Para poder detener un temporizador, este se guarda en una variable para poder usar la funcion <span class="example">clearTimeout(id)</span> en caso que hayamos usado el temporizador <span class="example">setTimeout()</span>, si no, usamos la funcion <span class="example">clearInterval(id)</span> para cuando hayamos usado el temporizador <span class="example">setInterval()</span>.
+            </p>
+
+            <pre>
+                <code>
+const id = setTimeout(() => console.log(`Ejecucion ...`), 3000)
+clearTimeout(id)
+
+const id = setInterval(() => { console.log(`Teoria y practica de JavaScript`)}, 3000);
+clearInterval(id)
+                </code>
+            </pre>
+        </section>
+        
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/temporizadores.js"></script>
+    
+</body>
+</html>
