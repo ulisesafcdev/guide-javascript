@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Event Loop</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Asincronía y Event Loop</h1>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <p class="container__text">
+                La asincronía es uno de los pilares fundamentales de JavaScript, ya que es un lenguaje de programación de un solo subproceso o hilo <span class="example">single thread</span>, lo que significa que solo puede ejecutar una cosa a la vez.
+            </p>
+
+            <p class="container__text">
+                Si bien los idiomas de un solo hilo simplifican la escritura de código porque no tiene que preocuparse por los problemas de concurrencia, esto también significa que no puede realizar operaciones largas como el acceso a la red sin bloquear el hilo principal.
+            </p>
+
+            <p class="container__text">
+                Imagina que solicitas datos de una API. Dependiendo de la situación, el servidor puede tardar un tiempo en procesar la solicitud mientras bloquea el hilo principal y hace que la pagina web no responda.
+            </p>
+
+            <p class="container__text">
+                Ahi es donde entra en juego la asincronía que permite realizar largas solicitudes de red sin bloquear el hilo principal. JavaScript fue diseñado para ser ejecutado en navegadores, trabajar con peticiones sobre la red y procesar las interacciones de usuario, al tiempo que mantiene una interfaz fluida.
+            </p>
+
+            <p class="container__text">
+                JavaScript usa un modelo asíncrono y no bloqueante, con un loop de eventos implementando en un solo hilo llamado <span class="example">single thread</span> para operaciones de entrada y salida <span class="example">input/output</span>. JavaScript es altamente concurrente a pesar de emplear un solo hilo.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Single thread y Multi thread</h2>
+            </div>
+
+            <p class="container__text">
+                Un hilo la unidad básica de un proceso, cada que abres un programa como el navegador o tu editor de código, se levanta un proceso en tu computadora e internamente este puede tener uno o varios hilos <span class="example">threads</span> ejecutándose para que el proceso funcione.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Operaciones de CPU, entrada y salida</h2>
+            </div>
+            <p class="container__text">
+                <span class="example">operaciones CPU</span> son aquellas que pasan el mayor tiempo consumiendo procesos del CPU, por ejemplo, la escritura de ficheros. <span class="example">operaciones de entrada y salida</span> son aquellas que pasan la mayor parte del tiempo esperando la respuesta de una petición o recurso, como la solicitud a una API o Base de Datos.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Concurrencia y Paralelismo</h2>
+            </div>
+
+            <p class="container__text">
+                <span class="example">concurrencia<</span> es cuando dos o mas tareas progresan simultáneamente, <span class="example">paralelismo</span> es cuando dos o mas tareas se ejecutan al mismo tiempo.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Bloqueante y No Bloqueante</h2>
+            </div>
+            <p class="container__text">
+                Se refiere a como la fase de espera de las operaciones afectan a nuestra aplicación, <span class="example">bloqueante</span> son aquellas operaciones que no devuelven el control a nuestra aplicación hasta que se ha completado. Por tanto el <span class="example">thread</span> queda bloqueado en estado de espera. <span class="example">No bloqueante</span> son aquellas operaciones que devuelven inmediatamente el control a nuestra aplicación, independientemente del resultado de esta. En caso de que se haya completado, devolverá los datos solicitados. En caso contrario si la operación no ha podido ser satisfecha podría devolver un código de error.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Síncrono y Asíncrono</h2>
+            </div>
+            <p class="container__text">
+                <span class="example">síncrono</span> es cuando la respuesta sucede en el presente, una operación síncrona esperara el resultado. <span class="example">asíncrono</span> es cuando la respuesta sucede a futuro, una operación asíncrona no esperara el resultado.
+            </p>
+            <p class="container__text">
+                Con este concepto, en JavaScript podemos tener: <br><br><span class="example">codigo sincrono y bloqueante</span><br><span class="example">codigo asincrono y no bloqueante</span>
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Mecanismos asíncronos en JavaScript</h2>
+            </div>
+
+            <p class="container__text">
+                Para controlar la asincronía, JavaScript cuenta con algunos mecanismos: <span class="example">Callbacks</span>, <span class="example">Promises</span>, <span class="example">Async / Await</span>
+            </p>
+
+            <div class="container__title">
+                <h3>Callbacks</h3>
+            </div>
+
+            <p class="container__text">
+                Una <span class="example">callback</span>, (llamada de vuelta) es una función que se ejecutara después de que otra lo haga. Es un mecanismo para asegurar que cierto código no se ejecute hasta que otro haya terminado. Al ser JavaScript un lenguaje orientado a eventos, los <span class="example">callback</span> son una buena técnica para controlar la asincronía, sin embargo, hay algo llamado <i>callback hell</i>.
+            </p>
+
+            <div class="container__title">
+                <h3>Promises</h3>
+            </div>
+
+            <p class="container__text">
+                Una <span class="example">promise</span> es un objeto que representa el resultado de una operación asíncrona y tiene 3 estados posibles: pendiente, resuelta y rechazada. Tienen la particularidad de que se pueden encadenar <span class="example">then</span>, siendo el resultado de una promesa, los datos de entrada de otra posible función. Las <span class="example">promise</span> mantienen un código mas legible y mantenible que las <span class="example">callback</span>, ademas tienen un mecanismo para la detección de errores <span class="example">catch</span> que es posible usar en cualquier parte del flujo de datos.
+            </p>
+
+            <div class="container__title">
+                <h3>Async / Await</h3>
+            </div>
+
+            <p class="container__text">
+                Las <span class="example">promise</span> fueron una gran mejora respecto a las <span class="example">callback</span> para controlar la asincronía en JavaScript, sin embargo pueden llegar a ser muy verbosas a medida que se requieran mas y mas métodos <span class="example">then</span>. Las funciones asíncronas <span class="example">async / await</span> surgen para simplificar el manejo de las <span class="example">promise</span>.
+            </p>
+
+            <p class="container__text">
+                La palabra <span class="example">async</span> declara una función como asíncrona e indica que una <span class="example">promise</span> sera automáticamente devuelta. Podemos declarar como <span class="example">async</span> funciones con nombre, anónimas o funciones flecha.
+            </p>
+
+            <p class="container__text">
+                La palabra <span class="example">await</span> debe ser usado siempre dentro de una función declarada como <span class="example">async</span> y esperara de forma asíncrona y no bloqueante a que una promesa se resuelva o rechace.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Ejemplos JavaScript Sincrono</h2>
+            </div>
+
+            <p class="container__text">
+                Como anteriormente lo habíamos explicado, en JavaScript podemos tener código sincrono y bloqueante. El motor de JavaScript mantiene una pila de ejecución, al invocar funciones estas se van agregando a la pila de ejecución, si tenemos 3 funciones, e invocamos las 3 funciones, estas serán agregadas a una pila para poder ejecutarse una por una, una vez ejecutadas, van saliendo de la pila de ejecución. 
+            </p>
+
+            <p class="container__text">
+                Veamos el primer ejemplo:
+            </p>
+
+            <pre>
+                <code>
+function uno() {
+    console.log(`Soy la funcion numero uno`)
+}
+
+function dos() {
+    console.log(`Soy la funcion numero dos`)
+}
+
+function tres() {
+    console.log(`Soy la funcion numero tres`)
+}
+
+uno()
+dos()
+tres()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Veamos el resultado:
+            </p>
+
+            <img src="../assets/img/js-sincrono-1.png" alt="captura ejemplo JavaScript sincrono bloqueante">
+
+            <p class="container__text">
+                En el código de ejemplo, definimos 3 funciones con un código a ejecutar, al invocar las 3 funciones, se van agregando a la pila de ejecución, según se vayan invocando se irán ejecutando de manera secuencial.
+            </p>
+
+            <p class="container__text">
+                Veamos otro ejemplo:
+            </p>
+
+            <pre>
+                <code>
+function ejecucionUno() {
+    console.log(`Terminare ejecucion uno para continuar con la siguiente ejecucion...`)
+}
+
+function ejecucionDos() {
+    ejecucionUno()
+    console.log(`Terminare ejecucion dos para continuar con la siguiente ejecucion...`)
+}
+
+function ejecucionTres() {
+    ejecucionDos()
+    console.log(`Terminare ejecucion tres para continuar con la siguiente ejecucion...`)
+}
+
+ejecucionTres()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En este otro ejemplo, tenemos otras 3 funciones, en la función <span class="example">ejecucionUno()</span> tenemos un mensaje para mostrarlo por consola, en la función <span class="example">ejecucionDos()</span> invocamos la función <span class="example">ejecucionUno()</span> y mostramos un mensaje por consola, en la función <span class="example">ejecucionTres()</span> invocamos la función <span class="example">ejecucionDos()</span> y a la misma vez mostramos un mensaje por consola.
+            </p>
+
+            <p class="container__text">
+                En este ejemplo solo invocamos la función <span class="example">ejecucionTres()</span>, nótese que según la pila de ejecucion, primero se agregara la función <span class="example">ejecucionTres()</span>, dentro de ella tenemos invocada la función <span class="example">ejecucionDos()</span> por lo tanto la siguiente en unirse a la pila es esa función, y dentro de la función<span class="example">ejecucionDos()</span> invocamos la función <span class="example">ejecucionUno()</span> terminando de agregar a la pila esa función.
+            </p>
+
+            <p class="container__text">
+                En primer lugar, se ejecuta <span class="example">ejecucionUno()</span> y sale de la pila, justo después termina <span class="example">ejecucionDos()</span>, y por ultimo <span class="example">ejecucionTres()</span>.
+            </p>
+
+            <p class="container__text">
+                Este es el resultado:
+            </p>
+
+            <img src="../assets/img/js-sincrono-2.png" alt="codigo ejemplo JavaScript sincrono bloqueante">
+
+            <article>
+                <p>En resumen, todo lo que sucede dentro de la pila de ejecución de funciones es secuencial. Esta es la parte sincrona de JavaScript. El procesamiento de JavaScript se asegura de que todo lo que esta en la pila se ejecuta antes de comenzar algo nuevo.</p>
+            </article>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Ejemplos JavaScript Asíncrono</h2>
+            </div>
+
+            <p class="container__text">
+                Recordemos que en JavaScript hay código asíncrono y no bloqueante, es decir, hay código que se ejecuta y devuelve inmediatamente el resultado al control del hilo, evitando el bloque, osea, evitando que se ejecute una tarea para ejecutar la siguiente.
+            </p>
+
+            <pre>
+                <code>
+function mensajeTarde() {
+    console.log(`Soy un mensaje retardado...`)
+}
+
+function mensajeRapido() {
+    console.log(`Soy un mensaje rapidooooooooo...`)
+}
+
+setTimeout(mensajeTarde, 3000)
+mensajeRapido()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En este ejemplo hacemos uso del temporizador <span class="example">setTimeout()</span> para simular un proceso asincrono. Tenemos 2 funciones llamadas <span class="example">mensajeTarde()</span> y otra función llamada <span class="example">mensajeRapido()</span>.
+            </p>
+
+            <p class="container__text">
+                Con el temporizador retardamos la ejecucion de la función <span class="example">mensajeTarde()</span> con un retraso de 3000 milisegundos, osea, 3 segundos. Luego se ejecuta la funcion <span class="example">mensajeRapido()</span>. <br><br> Ahora bien veamos cual es el resultado:
+            </p>
+
+            <img src="../assets/img/js-asincrono-1.png" alt="codigo ejemplo JavaScript asincrono no bloqueante">
+
+            <p class="container__text">
+                Al ejecutar la aplicación lo primero en ejecutarse es la función <span class="example">mensajeRapido()</span>, inmediatamente devuelve el resultado. Al pasar unos segundos se ejecuta la otra funcion <span class="example">mensajeTarde()</span>, devolviendo su resultado. <br><br>Veamos el resultado al pasar unos segundos:
+            </p>
+
+            <img src="../assets/img/js-asincrono-2.png" alt="codigo ejemplo JavaScript asincrono no bloqueante">
+
+            <p class="container__text">
+                Veamos otro ejemplo:
+            </p>
+
+            <pre>
+                <code>
+console.log(`INICIO`)
+
+function dos() {
+    setTimeout(() => {
+        console.log(`Dos`)
+    }, 1000)
+}
+
+function uno() {
+    setTimeout(() => {
+        console.log(`Uno`)
+    }, 0)
+
+    dos()
+    console.log(`Tres`)
+}
+
+uno()
+
+console.log(`FIN`)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Analicemos el codigo, tenemos dos funciones asíncronas, y tenemos mensajes por mostrar en consola, tenemos dos funciones llamadas <span class="example">uno()</span> & <span class="example">dos()</span>, en la funcion <span class="example">dos()</span> tenemos un codigo asíncrono con un mensaje que mostrar en consola. En la funcion <span class="example">uno()</span> tenemos un codigo asíncrono con un mensaje que mostrar en consola, y a la vez invocamos la funcion <span class="example">uno()</span> y por ultimo mostramos un mensaje en consola.
+            </p>
+
+            <p class="container__text">
+                Invocamos la funcion <span class="example">uno()</span> y pensemos como seria el resultado, si pensamos a primera vista que el codigo se ejecutaría de forma secuencial, el resultado seria:
+            </p>
+
+            <pre>
+                <code>
+INICIO
+uno
+Dos
+Tres
+FIN
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Pero recordemos que al ser un codigo asíncrono no bloqueante, la ejecucion de la funcion <span class="example">uno()</span> inmediatamente devolvería los resultados según vaya ejecutando el proceso dentro de la funcion. Entonces, tomando en cuenta eso, primero se ejecutarían los <span class="example">console.log()</span> de forma secuencial: <span class="example">"INICIO"</span>, <span class="example">"Tres"</span> y <span class="example">"FIN"</span>, luego entraría el codigo asíncrono esperando a devolver el resultado, continuaría devolviendo el mensaje <span class="example">"Uno"</span> ya que tiene un tiempo de espera de 0 milisegundos, y por ultimo el mensaje <span class="example">"Dos"</span> que tiene un retraso de ejecucion de 1 segundo.
+            </p>
+
+            <img src="../assets/img/js-asincrono-3.png" alt="codigo ejemplo JavaScript asincrono no bloqueante">
+
+            <article>
+                <p>
+                    Con este ejemplo podemos observar que el codigo asincrono no bloqueante no espera a que se termine de ejecutar un proceso para continuar con el siguiente, inmediatamente devuelve el resultado de las tareas o recursos que se este ejecutando en el momento. A diferencia del codigo sincrono bloqueante.
+                </p>
+            </article>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Ejemplos JavaScript Asíncrono con funcion Callback</h2>
+            </div>
+
+            <p class="container__text">
+                Veamos como podemos tener codigo asincrono con el mecanismo de una <span class="example">callback</span>, para empezar, una funcion <span class="example">callback</span> es una funcion que se pasa a otra funcion como un argumento, que luego se invoca dentro de la funcion externa para completar algún tipo de rutina o acción.
+            </p>
+
+            <p class="container__text">
+                Veamos un ejemplo de como usar un callback asincrono:
+            </p>
+
+            <pre>
+                <code>
+function tablaDeMultiplicar(value, limite, callback) {
+    console.log(`Tabla del ${value}`)
+    console.log(`-------------`)
+    let i = 1
+    let rs = 0
+    for(i; i <= limite; i++) {
+        rs = value * i
+        console.log(`${value} * ${i} = ${rs}`)
+    }
+    console.log(`-------------`)
+    setTimeout(() => {
+        callback()
+    }, 0 | (Math.random() * 1000))
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Vamos a analizar el codigo anterior, tenemos una funcion como comúnmente se declara una funcion, antes, el objetivo de esta funcion es mostrar una tabla de multiplicar. Esta funcion recibe 3 parámetros, 2 de ellos son <span class="example">"value"</span>, <span class="example">"limite"</span>, por ultimo tenemos un <span class="example">callback</span>, recordemos que un <span class="example">callback</span> es una funcion que se pasa como un argumento a otra funcion.
+            </p>
+
+            <p class="container__text">
+                El parámetro <span class="example">"value"</span> es la tabla de multiplicar que queremos mostrar. El parámetro <span class="example">"limite"</span> hace referencia hasta que numero queremos mostrar la multiplicación, esto lo haremos con un bucle. Seguido, definimos 2 variables llamadas <span class="example">"i"</span> haciendo referencia al iterador del bucle, <span class="example">"rs"</span> hace referencia al resultado de la multiplicación. Hemos definido la variable <span class="example">"i"</span> fuera del bucle <span class="example">for</span> ya que luego la utilizaremos, y al definirla dentro del bucle <span class="example">for</span> no podremos acceder a ella por su ámbito local dentro de la funcion <span class="example">for</span>.
+            </p>
+
+            <p class="container__text">
+                Continuando, definimos un bucle <span class="example">for</span>, como ya hemos definido la variable <span class="example">"i"</span> ya no es necesario declararla en el bucle, solo basta con poner la variable, la definimos con un valor de "1" ya que la tabla de multiplicar empezara desde el "1" hasta el limite que definimos, y por cada vuelta se ira aumentando de uno en uno hasta llegar al <span class="example">"limite"</span> que definimos en el parámetro de la funcion.
+            </p>
+
+            <p class="container__text">
+                En la variable <span class="example">"rs"</span> guardaremos el resultado de la multiplicación por cada vuelta que hará el bucle. Osea, el parámetro <span class="example">"value"</span> lo multiplicaremos por el "iterador", osea la variable <span class="example">"i"</span>. Seguido, de una vez mostramos el resultado por consola. Y salimos del bucle.
+            </p>
+
+            <p class="container__text">
+                Para hacer de esto asincrono, basta con usar un temporizador llamado <span class="example">setTimeout()</span>. Dentro del temporizador usamos el parámetro llamado <span class="example">callback</span>, es aquí donde finalmente llamamos la funcion callback, a esta funcion también le podemos mandar argumentos para cuando vayamos a invocar un <span class="example">callback</span> hacer uso de ellos. Para definir un tiempo exacto en el que se tardara en ejecutarse la funcion callback, hacemos una operación usando <span class="example">Math.random() * 1000</span>, asi cada llamada tardara diferente tiempo.
+            </p>
+
+            <p class="container__text">
+                Hasta aquí tenemos una funcion donde mandamos un <span class="example">callback</span> como parámetro a otra funcion. Invocaremos esta funcion y veremos como es su uso y también veremos el famoso "callback hell".
+            </p>
+
+            <pre>
+                <code>
+tablaDeMultiplicar(1, 10, () => {
+
+})
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Primero invocamos la funcion como normalmente lo haríamos, indicamos los primeros 2 parámetros, osea, el <span class="example">"value"</span> y <span class="example">"limite"</span>, el tercer parámetro es un <span class="example">callback</span>, osea una funcion callback como parámetro. En este caso puede ser una funcion declarada o una funcion de flecha. Hasta aquí todo normal, pero queremos nuevamente invocar nuestra funcion, es aca donde se invoca la funcion dentro de la funcion callback:
+            </p>
+
+            <pre>
+                <code>
+tablaDeMultiplicar(1, 10, () => {
+    tablaDeMultiplicar(2, 10, () => {
+
+    })
+})
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Podemos observar que en la funcion callback, se va encadenando cada llamada de la funcion <span class="example">tablaDeMultiplicar()</span> dentro de la funcion callback, y asi sucesivamente...
+            </p>
+
+            <pre>
+                <code>
+tablaDeMultiplicar(1, 10, () => {
+    tablaDeMultiplicar(2, 10, () => {
+        tablaDeMultiplicar(3, 10, () => {
+
+        })
+    })
+})                    
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Por cada llamada a la funcion dentro del callback, se va incrementando nuestro codigo, imaginemos que queremos mostrar todas las tablas de multiplicar hasta la tabla del numero 10:
+            </p>
+
+            <pre>
+                <code>
+tablaDeMultiplicar(1, 10, () => {
+    tablaDeMultiplicar(2, 10, () => {
+        tablaDeMultiplicar(3, 10, () => {
+            tablaDeMultiplicar(4, 10, () => {
+                tablaDeMultiplicar(5, 10, () => {
+                    tablaDeMultiplicar(6, 10, () => {
+                        tablaDeMultiplicar(7, 10, () => {
+                            tablaDeMultiplicar(8, 10, () => {
+                                tablaDeMultiplicar(9, 10, () => {
+                                    tablaDeMultiplicar(10, 10, () => {
+                                        
+                                    })
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    })
+})
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Por cada llamada, se va incrementando el codigo y se va formando como una pirámide, a esto se le conoce como "callback hell". Imaginemos que queramos mostrar hasta la tabla del numero 100. Y suele suceder en otras aplicaciones en la cual estemos consumiendo una API o Base de Datos donde sean muchos datos mas de 100, esta bien usarse si no es mucho dato que consumir, sin embargo hay mejores opciones donde podemos optimizar el codigo.
+            </p>
+
+            <article>
+                <p>
+                    En conclusion, un <span class="example">callback</span> es muy sencillo de comprender y de utilizar. Recordar siempre que un <span class="example">callback</span> es una funcion que se pasa como argumento a otra funcion. Y para usar este <span class="example">callback</span>, primero, se debe de hacer "algo" para después llamar la funcion <span class="example">callback</span> y al invocar la funcion en cada <span class="example">callback</span> se pueda procesar el "algo" que hemos determinado.
+                </p>
+            </article>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Ejemplos JavaScript Asíncrono con Promesas</h2>
+            </div>
+
+            <p class="container__text">
+                El objeto <span class="example">Promise</span> representa la eventual finalización o falla de una operación asincronica y su valor resultante.
+            </p>
+
+            <p class="container__text">
+                Las <span class="example">Promise</span> mantienen un codigo mas legible y mantenible que las <span class="example">callback</span>, ademas tienen un mecanismo para la detección de errores <span class="example">catch</span> que es posible usar en cualquier parte del flujo de datos.
+            </p>
+
+            <p class="container__text">
+                Veamos un ejemplo de como usar <span class="example">Promise</span> en codigo asincrono:
+            </p>
+
+            <pre>
+                <code>
+const tablaDeMultiplicar = (value) => {
+
+    if (typeof value !== "number") {
+        return Promise.reject(`Solo se permiten valores numericos`)
+    }
+
+    console.log(`Tabla del ${value}`)
+    console.log(`------------`)
+    
+    for(let i = 1; i <= 10; i++) {
+        let rs = value * i
+        console.log(`${value} * ${i} = ${rs}`)
+    }
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve()
+        }, 0 | (Math.random() * 2000))
+    })
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En este ejemplo, el objetivo es mostrar un tabla de multiplicar según el valor que indiquemos. Definimos una funcion flecha con el nombre <span class="example">tablaDeMultiplicar()</span> el cual recibe un parámetro de un numero en relación a la tabla de multiplicar.
+            </p>
+
+            <p class="container__text">
+                Al utilizar promesas existe 3 posibles estados: <span class="example">pendiente</span>, <span class="example">resuelta</span> y <span class="example">rechazada</span>. Una promesa originalmente esta en estado <span class="example">pendiente</span>, cuando llamamos a <span class="example">resolve()</span> entonces la promesa pasa a estar en estado <span class="example">resuelta</span>, si llamamos a <span class="example">reject()</span> entonces la promesa pasa a estar en estado <span class="example">rechazada</span>. Esto lo entenderemos en el siguiente párrafo.
+            </p>
+
+            <p class="container__text">
+                Cuando usamos promesas, nosotros podemos retornar, devolver esa promesa, y esa promesa recibe 2 parámetros, la parte que resuelve, osea, <span class="example">resolve</span>, y la parte que rechaza, osea, <span class="example">reject</span>, las cuales son funciones.
+            </p>
+
+            <p class="container__text">
+                En la funcion <span class="example">tablaDeMultiplicar()</span> que hemos creado, validamos que el parámetro sea un numero y no una cadena de texto con las siguientes lineas de codigo:
+            </p>
+
+            <pre>
+                <code>
+const tablaDeMultiplicar = (value) => {
+
+    if (typeof value !== "number") {
+        return Promise.reject(`Solo se permiten valores numericos`)
+    }
+
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En la validación, rechazamos con <span class="example">Promise.reject()</span> en caso de que el parámetro no sea un numero. Podemos usar el método estático del constructor <span class="example">Promise</span> llamado <span class="example">reject()</span>, el cual devuelve una promesa que se rechaza por la validación que definimos. Hasta aquí ya tenemos resuelta el estado que rechaza la promesa.
+            </p>
+
+            <p class="container__text">
+                Continuando, realizamos "algo", osea, definimos lo que queremos que se procese al invocar la funcion, en este caso usamos un bucle <span class="example">for</span> para ir desde el "1" hasta el "10" y mostrar la tabla de multiplicar. Dentro del bucle definimos una variable llamada "rs" para almacenar el resultado de la multiplicación por cada vuelta del bucle, y mostrar en pantalla los datos de la tabla de multiplicar.
+            </p>
+
+            <p class="container__text">
+                Posterior a esto, pasamos a la parte que resuelve. Para terminar, en nuestra funcion retornamos una Promesa, pero haciendo uso de su constructor. Su constructor recibe una funcion como parámetro con los valores <span class="example">resolve</span> y <span class="example">reject</span>, que a la vez son funciones también. Como ya tenemos la parte que rechaza, esta vez tendremos la parte que resuelve.
+            </p>
+
+            <pre>
+                <code>
+const tablaDeMultiplicar = (value) => {
+
+    ...
+    ...
+    ...
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve()
+        }, 0 | (Math.random() * 2000))
+    })
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Dentro de la promesa definimos un temporizador, el cual hara que nuestro codigo sea asincrono, dentro del temporizador, invocamos la funcion <span class="example">resolve()</span>, y ya tenemos hecho la parte que resuelve. Hasta aquí hemos terminado la funcion asíncrona que nos devuelve Promesa, ahora veamos como podemos invocarla. 
+            </p>
+
+            <pre>
+                <code>
+tablaDeMultiplicar(0).then((result) => { }).catch(err => console.error(err))
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Como nuestra funcion devuelve promesas, nos puede devolver un rechazo o nos puede devolver el proceso resuelto, por eso al invocar la funcion <span class="example">tablaDeMultiplicar()</span> la encadenamos con otra funcion llamada <span class="example">then()</span> que es donde se muestra la parte resuelta, y con <span class="example">catch()</span> capturamos la parte que rechaza el proceso.
+            </p>
+
+            <p class="container__text">
+                Veamos como quedaría al invocar la funcion <span class="example">tablaDeMultiplicar()</span> una sola vez:
+            </p>
+
+            <pre>
+                <code>
+tablaDeMultiplicar(1)
+    .then(result => {
+        
+    })
+    .catch(err => console.log(err))
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Dentro de cada <span class="example">then()</span> recibe un parámetro, en si es el resultado de la promesa, por ello escribimos como parámetro el nombre de <span class="example">"result"</span>. Automáticamente se muestra el resultado en pantalla, debido a que en la funcion <span class="example">tablaDeMultiplicar()</span> hemos hecho todo el proceso para mostrar el resultado. Pero que pasa si queremos continuar con la siguiente tabla de Multiplicar?
+            </p>
+
+            <pre>
+                <code>
+tablaDeMultiplicar(1)
+    .then(result => {
+        tablaDeMultiplicar(2)
+    })
+    .then(result => {
+        
+    })
+    .catch(err => console.log(err))
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Si vemos el codigo, dentro del primer <span class="example">then()</span> que es donde se muestra el primer resultado, es ahi donde volvemos a invocar la funcion <span class="example">tablaDeMultiplicar()</span> y volvemos a encadenar otro <span class="example">then()</span> para mostrar el resultado nuevamente de la ultima invocación de la funcion <span class="example">tablaDeMultiplicar()</span>.
+            </p>
+
+            <p class="container__text">
+                Y es asi sucesivamente como podemos encadenar cada promesa resuelta en cada invocación, en caso de encontrar un error, se capturara en <span class="example">catch()</span> y mostrara un mensaje con el error, es decir, se mostrara la promesa rechazada según la validación que definimos.
+            </p>
+
+            <pre>
+                <code>
+tablaDeMultiplicar(1)
+    .then(result => {
+        tablaDeMultiplicar(2)
+    })
+    .then(result => {
+        tablaDeMultiplicar(3)
+    })
+    .then(result => {
+        tablaDeMultiplicar("hola")
+    })
+    .then(result => {
+        tablaDeMultiplicar(5)
+    })
+    .then(result => {
+        tablaDeMultiplicar(6)
+    })
+    .then(result => {
+        tablaDeMultiplicar(7)
+    })
+    .then(result => {
+        tablaDeMultiplicar(8)
+    })
+    .then(result => {
+        tablaDeMultiplicar(9)
+    })
+    .then(result => {
+        tablaDeMultiplicar(10)
+    })
+    .then(result => { })
+    .catch(err => console.log(err))
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Es asi como quedaría el codigo, según vayamos necesitando la información de cada promesa devuelta. 
+            </p>
+
+            <article>
+                <p>
+                    En conclusion, las promesas <span class="example">Promise</span>, fueron una gran mejora respecto a las <span class="example">callbacks</span> para controlar la asincronía en JavaScript, sin embargo pueden llegar a ser muy verbosas a medida que se requieran mas y mas métodos <span class="example">then()</span>.
+                </p>
+            </article>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Ejemplos JavaScript Asíncrono con Async / Await</h2>
+            </div>
+
+            <p class="container__text">
+                Las funciones asíncronas <span class="example">async / await</span> surgen para simplificar el manejo de las promesas. La palabra <span class="example">async</span> declara una funcion como asíncrona e indica que una promesa sera automáticamente devuelta. Podemos declarar como <span class="example">async</span> funciones declaradas, funciones expresadas, funciones anónimas y funciones flechas.
+            </p>
+
+            <p class="container__text">
+                La palabra <span class="example">await</span> debe de ser usado siempre dentro de una funcion declarada como <span class="example">async</span> y esperara de forma asíncrona y no bloqueante a que una promesa se resuelva o rechace.
+            </p>
+
+            <p class="container__text">
+                Usaremos el mismo ejemplo anterior para ver la diferencia entre usar promesas y usar <span class="example">async / await</span>:
+            </p>
+
+            <pre>
+                <code>
+const tablaDeMultiplicar = (value) => {
+
+    if (typeof value !== "number") {
+        return Promise.reject(`Solo se permiten valores numericos`)
+    }
+
+    console.log(`------------`)
+    console.log(`Tabla del ${value}`)
+    console.log(`------------`)
+    
+    for(let i = 1; i <= 10; i++) {
+        let rs = value * i
+        console.log(`${value} * ${i} = ${rs}`)
+    }
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve()
+        }, 0 | (Math.random() * 2000))
+    })
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En pocas palabras, definimos una funcion que nos devuelve una promesa en caso de que se rechace, y en caso de que se resuelva. Devolvemos una promesa que recibe una funcion como parámetro que a su vez recibe otro parámetro donde se resuelve la ejecucion del programa dentro de un temporizador para hacerlo asincrono. 
+            </p>
+
+            <p class="container__text">
+                Ahora si veamos como funciona <span class="example">async / await</span>, para eso, creamos otra funcion, en este ejemplo creamos una funcion llamada <span class="example">resultFunctionAsync()</span>, de la cual esta sera nuestra funcion asíncrona donde se mostrara el resultado de la promesa.
+            </p>
+
+            <pre>
+                <code>
+const resultFunctionAsync = async () => {
+
+    try {
+
+        await tablaDeMultiplicar(1)
+        await tablaDeMultiplicar(2)
+        await tablaDeMultiplicar(3)
+        await tablaDeMultiplicar(4)
+        await tablaDeMultiplicar(5)
+        await tablaDeMultiplicar(6)
+        await tablaDeMultiplicar(7)
+        await tablaDeMultiplicar("jk")
+        await tablaDeMultiplicar(9)
+        await tablaDeMultiplicar(10)
+        
+    } catch (err) {
+        console.error(err)
+    }
+    
+}
+
+resultFunctionAsync()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para usar <span class="example">async / await</span> creamos otra funcion donde se mostrara el resultado de la promesa. En este caso usamos una funcion flecha por lo tanto, antes de los paréntesis () escribimos <span class="example">async</span> para definir como funcion asíncrona.
+            </p>
+
+            <p class="container__text">
+                Dentro de la funcion definimos un bloque <span class="example">try ... catch</span> donde invocaremos la funcion que nos devuelve la promesa. Pero antes de invocarla escribimos la palabra <span class="example">await</span> indicando que espere el resultado de la promesa ya sea que se resuelva o se rechace. En caso de que se rechace, se captura la promesa en el bloque <span class="example">catch</span>.
+            </p>
+
+            <p class="container__text">
+                Solo queda invocar la funcion asíncrona para mostrar los resultados de la ejecucion final.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/event-loop.js"></script>
+    
+</body>
+</html>
