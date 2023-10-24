@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Symbols</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Symbols</h1>
+        <p class="header__text">
+            Es un objeto incorporado cuyo constructor devuelve un <span class="example">symbol</span> primitivo, que esta garantizado que sea único. Los <span class="example">symbols</span> se utilizan a menudo para añadir claves de propiedades únicas a un objeto que no sean iguales a las claves que cualquier otro código pueda agregar al objeto.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Creando un nuevo <span class="example__title">symbol</span> primitivo</h2>
+            </div>
+
+            <pre>
+                <code>
+let dui = Symbol('identificador')
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para crear un nuevo <span class="example">symbol</span> definimos una nombre a una variable y la igualamos con <span class="example">Symbol()</span>, dentro de los paréntesis podemos definir un nombre descriptivo al <span class="example">symbol</span> que hemos creado.
+            </p>
+
+            <p class="container__text">
+                Los <span class="example">symbol</span> son utilizados en objetos para propiedades que necesitemos ocultar su nombre, y a la vez evitar conflicto con otra propiedad del mismo nombre.
+            </p>
+
+            <p class="container__text">
+                Veamos un ejemplo:
+            </p>
+
+            <pre>
+                <code>
+let datosPersona = {
+    [dui]: '963258741',
+    nombre: 'ulises',
+    apellido: 'flores',
+    edad: 24,
+    dui: '963258741'
+}
+
+console.log(datosPersona)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Analicemos el código, primero definimos nuestro <span class="example">symbol</span> como propiedad privada y unica a las demás, creamos un objeto llamado <span class="example">"datosPersona"</span> con algunas propiedades, para usar nuestro <span class="example">symbol</span> creado anteriormente se colocan unos corchetes [] y dentro de ello colocamos el nombre que asignamos al <span class="example">symbol</span> que creamos. Automáticamente el lenguaje ya entiende que dentro del objeto tendremos un <span class="example">symbol</span> cuando colocamos los corchetes [].
+            </p>
+
+            <p class="container__text">
+                Si observamos, en nuestro objeto tenemos un <span class="example">symbol</span> que lo llamamos <span class="example">"dui"</span>, pues este symbol lo creamos porque necesitamos un identificador en nuestro objeto, pero a la vez, tenemos otra propiedad con el mismo nombre y el mismo valor, el cual necesitamos que ambos estén en el objeto, pero, que uno de ellos nos servirá como identificador.
+            </p>
+
+            <p class="container__text">
+                Mostraremos en consola el objeto creado, y veamos que nos imprime:
+            </p>
+
+            <img src="../assets/img/symbol-1.png" alt="captura resultado ejemplo symbol">
+
+            <p class="container__text">
+                Al ver el objeto en consola, vemos los nombres de cada propiedad del objeto, a excepción de uno, y ese es el <span class="example">symbol</span> que hemos definido como identificador, fíjate como aparece el nombre descriptivo que le dimos al definir por primera vez, para eso nos sirve el nombre descriptivo, en caso que tengamos mas de un <span class="example">symbol</span>.
+            </p>
+
+            <p class="container__text">
+                Ahora bien, recorramos el objeto con un bucle <span class="example">for ... in</span>
+            </p>
+
+            <pre>
+                <code>
+for(let prop in datosPersona) {
+    console.log(`${prop}: ${datosPersona[prop]}`)
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Mostraremos el nombre de las propiedades y sus valores, y veamos el resultado:
+            </p>
+
+            <img src="../assets/img/symbol-2.png" alt="captura resultado ejemplo symbol">
+
+            <p class="container__text">
+                Nos muestra las propiedades del objeto, a excepción de una, y esa es el <span class="example">symbol</span> que habíamos definido al principio. Esto nos indica que la propiedad <span class="example">symbol</span> esta oculta y privada, a esto se refiere cuando <span class="example">symbol</span> es utilizada en propiedades de objetos que queramos hacer privada y únicas.
+            </p>
+
+            <p class="container__text">
+                En caso que queramos listar o ver las propiedades privadas del objeto que hemos definido como <span class="example">symbol</span>, se muestra con lo siguiente:
+            </p>
+
+            <pre>
+                <code>
+console.log(Object.getOwnPropertySymbols(datosPersona))
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Pero solo nos muestra el nombre descriptivo del <span class="example">symbol</span> que hallamos definido:
+            </p>
+
+            <img src="../assets/img/symbol-3.png" alt="captura resultado ejemplo symbol">
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/symbols.js"></script>
+    
+</body>
+</html>
