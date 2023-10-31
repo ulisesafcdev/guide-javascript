@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Set</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Set</h1>
+        <p class="header__text">
+            El objeto <span class="example">Set</span> le permite almacenar valores únicos de cualquier tipo, ya sea valores primitivos o referencias a objetos. Puede iterar a traves de los elementos de un conjunto en orden de inserción. Un valor en un <span class="example">Set</span> solo puede ocurrir una vez, es único en la colección del <span class="example">Set</span>.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Creando un nuevo <span class="example__title">Set</span></h2>
+            </div>
+
+            <pre>
+                <code>
+let datos = new Set([5,6,9,9,9,8,2,2,2,"hola", "ola", true, false, {}, []])
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para crear un nuevo objeto <span class="example">Set</span> podemos usar su constructor, y los valores que ingresemos van dentro de unos corchetes como si fuera un arreglo. El objeto <span class="example">Set</span> nos permite almacenar distintos valores, pero, sin que se repita un mismo valor mas de 1 vez. En el ejemplo anterior, vemos como ingresamos valores repetidos, mostraremos el <span class="example">Set</span> en consola:
+            </p>
+
+            <img src="../assets/img/set-1.png" alt="captura resultado ejemplo Set">
+
+            <p class="container__text">
+                Para poder ver la longitud del objeto <span class="example">Set</span>, llamamos a su propiedad <span class="example">size</span>. Nos devuelve un <span class="example">Number</span> con la longitud del <span class="example">Set</span>.
+            </p>
+
+            <pre>
+                <code>
+console.log(datos.size)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para agregar un nuevo dato a nuestro objeto <span class="example">Set</span>, llamamos a su método de instancia <span class="example">.add(value)</span>, el cual agrega un nuevo dato que le indicamos por parámetro.
+            </p>
+
+            <pre>
+                <code>
+datos.add("ulisesafcdev")
+datos.add("odiseodev")
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para saber si hay un elemento existente dentro del set, llamamos a su método de instancia <span class="example">.has(value)</span>, este devuelve un valor booleano en caso de existir o no el elemento que le indicamos como parámetro.
+            </p>
+
+            <pre>
+                <code>
+console.log(datos.has("hola"))
+console.log(datos.has(false))
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para eliminar un elemento en especifico, llamamos a su método de instancia <span class="example">.delete(value)</span>, este devuelve un booleano en caso de que se haya eliminado el elemento indicado como parámetro.
+            </p>
+
+            <pre>
+                <code>
+datos.delete(true)
+datos.delete(false)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para eliminar todos los elementos del objeto <span class="example">Set</span>, llamamos a su método de instancia <span class="example">.clear()</span>, este elimina todo sus elementos dejándolo vació.
+            </p>
+
+            <pre>
+                <code>
+datos.clear()
+                </code>
+            </pre>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/set.js"></script>
+    
+</body>
+</html>
