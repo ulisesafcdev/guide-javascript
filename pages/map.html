@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Map</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Map</h1>
+        <p class="header__text">
+            Los <span class="example">Map</span> en JavaScript sib estructuras de datos nativas que permiten implementar una estructura de tipo mapa, es decir, una estructura donde tiene valores guardados a traves de una clave para identificarlos.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Creando un nuevo <span class="example__title">Map</span></h2>
+            </div>
+
+            <pre>
+                <code>
+let mapa = new Map([
+    ["nombres", "leonel andres"],
+    ["apellidos", "messi cuccitini"],
+    ["edad", 35],
+    ["nacionalidad", "argentino"]
+])
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En este ejemplo, creamos un elemento <span class="example">map</span> que no es mas que un mapa de pares clave-valor. En este <span class="example">map</span> tenemos elemento y para ingresar elementos se hace dentro de un corchete padre, pero cada elemento clave valor va dentro de un corchete <span class="example">[ ... , ... ]</span>.
+            </p>
+
+            <p class="container__text">
+                En consola se muestra lo siguiente:
+            </p>
+
+            <img src="../assets/img/map-1.png" alt="captura resultado ejemplo map">
+
+            <p class="container__text">
+                Para saber la longitud del <span class="example">map</span>, utilizamos la propiedad <span class="example">.size</span> para mostrar la cantidad de elementos "clave-valor" que se encuentran en nuestro mapa.
+            </p>
+
+            <pre>
+                <code>
+console.log(mapa.size)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para establecer nuevos elementos al mapa, utilizamos el método <span class="example">.set(clave, valor)</span>, en caso de ingresar un nuevo elemento con una clave igual a otra, pues esta se sobrescribirá su valor.
+            </p>
+
+            <pre>
+                <code>
+mapa.set("telefono", "74589632")
+mapa.set("empleado", true)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para comprobar si un elemento existe en el mapa, utilizamos el método <span class="example">.has(clave)</span>, como parámetro ingresamos la clave del elemento para saber si existe o no. Este nos devuelve un <span class="example">boolean</span>, si existe el elemento nos devolverá <span class="example">true</span>, de lo contrario, nos devolverá <span class="example">false</span>.
+            </p>
+
+            <pre>
+                <code>
+console.log(mapa.has("edad"))
+console.log(mapa.has("nacionalidad"))
+console.log(mapa.has("hobbies"))
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para eliminar un elemento en especifico se utiliza el método <span class="example">.delete(clave)</span>, como parámetro ingresamos la clave del elemento. Este nos devolverá un <span class="example">boolean</span>, nos devolverá <span class="example">true</span> en caso de ser eliminado el elemento, de lo contrario, nos devolverá <span class="example">false</span>.
+            </p>
+
+            <pre>
+                <code>
+console.log(mapa.delete("telefono"))
+console.log(mapa.delete("empleado"))
+console.log(mapa.delete("hobbies"))
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para eliminar todos los elementos y vaciar el mapa, utilizamos el método <span class="example">.clear()</span>, este método no devuelve nada y nos dejara el mapa con cero elementos.
+            </p>
+
+            <pre>
+                <code>
+mapa.clear()
+                </code>
+            </pre>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/map.js"></script>
+    
+</body>
+</html>
