@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>WeakSet & WeakMap</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">WeakSet & WeakMap</h1>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <div class="container__title">
+                <h2><span class="example__title">WeakSet</span></h2>
+            </div>
+
+            <p class="container__text">
+                El objeto <span class="example">WeakSet</span> te permite almacenar objetos débiles en una colección, son colecciones de objetos. Al igual que <span class="example">set</span>, cada objeto <span class="example">WeakSet</span> puede estar solo una vez; todos los objetos en una colección <span class="example">WeakSet</span> son únicos.
+            </p>
+
+            <p class="container__text">
+                Veamos como podemos crear un nuevo <span class="example">WeakSet</span>:
+            </p>
+
+            <pre>
+                <code>
+let ws = new WeakSet([
+    {
+        "nombre": "ulisesafcdev",
+        "edad": 24
+    }, 
+    {
+        "nombre": "odiseodev",
+        "edad": 24
+    }
+])
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Podemos crear directamente ingresando valores llamando al contructor del objeto <span class="example">WeakSet</span>, sus valores van dentro de corchetes, y como son colecciones de objetos, dentro de los corchetes van cada objeto separados por coma, como en el ejemplo anterior <span class="example">( [ { ... }, { ... } ] )</span>
+            </p>
+
+            <p class="container__text">
+                También podemos agregar objetos con el método <span class="example">.add(objeto)</span> asi como en el ejemplo siguiente:
+            </p>
+
+            <pre>
+                <code>
+let credito = {
+    "saldo": 1000,
+    "cuota": 49.15,
+    "interes mensual": 5.15
+}
+
+let perfil1 = {
+    "nombre": "ulisesafcdev", 
+    "edad": 24
+}
+
+let perfil2 = {
+    "nombre": "odiseodev",
+    "edad": 24
+}
+
+let ws = new WeakSet()
+
+
+ws.add(credito)
+ws.add(perfil1)
+ws.add(perfil2)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Esta es la manera recomendada en la que podemos agregar objetos a nuestro objeto <span class="example">WeakSet</span>.
+            </p>
+
+            <p class="container__text">
+                También podemos comprobar si un objeto se encuentra dentro de la colección de objetos <span class="example">WeakSet</span> con el método <span class="example">.has(objeto)</span>, este nos devuelve un <span class="example">boolean</span>, nos devuelve <span class="example">true</span>, en caso de que exista, de lo contrario devolverá <span class="example">false</span>.
+            </p>
+
+            <p class="container__text">
+                Podemos eliminar un objeto determinado de la colección de objetos con el método <span class="example">.delete(objeto)</span>, devuelve un <span class="example">boolean</span>, nos devolverá <span class="example">true</span> cuando se elimine el objetos, de lo contrario, nos devolverá <span class="example">false</span>.
+            </p>
+
+            <pre>
+                <code>
+console.log(ws.delete(perfil1)) // true
+
+console.log(ws.has(credito)) // true
+console.log(ws.has(perfil2)) // true
+console.log(ws.has(perfil1)) // false
+                </code>
+            </pre>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2><span class="example__title">WeakMap</span></h2>
+            </div>
+
+            <p class="container__text">
+                El objeto <span class="example">WeakMap</span> es una colección de pares llave/valor en la que las llaves deben ser objetos con valores de cualquier tipo de dato en JavaScript, y el cual no crea fuertes referencias a sus llaves, es decir, la presencia de un objeto como llave en un <span class="example">WeakMap</span> no evita que el objeto sea recolectado como basura. Una vez que se ha recopilado un objeto utilizado como llave, sus valores correspondientes en cualquier <span class="example">WeakMap</span> se convierten en candidatos para la recolección de basura, siempre y cuando no se les mencione fuertemente en otro lugares.
+            </p>
+
+            <p class="container__text">
+                Creando un nuevo <span class="example">WeakMap</span>:
+            </p>
+
+            <pre>
+                <code>
+let wm = new WeakMap()
+
+let obj1 = {
+    "name": "user1"
+}
+let obj2 = {
+    "name": "user2"
+}
+let obj3 = {
+    "name": "user3"
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Hacemos uso del constructor para crear un nuevo <span class="example">WeakMap</span>, recordar que es una colección de pares llave/valor, donde la llave debe ser un objeto. Por ello hemos creado 3 objetos. Para empezar a ingresar nuestra colección de pares en nuestro <span class="example">WeakMap</span>, usamos el método <span class="example">.set(llave, valor)</span>.
+            </p>
+
+            <pre>
+                <code>
+wm.set(obj1, "primer objeto")
+wm.set(obj2, "segundo objeto")
+wm.set(obj3, "tercero objeto")
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Como "llave" definimos los objetos que hemos creado, y como valor escribimos lo que queremos asignar como un valor, puede ser desde un objeto o una función.
+            </p>
+
+            <img src="../assets/img/weakmap-1.png" alt="captura resultado ejemplo weakmap">
+
+            <p class="container__text">
+                Para obtener el valor de cada colección, usamos el método <span class="example">.get(llave)</span>. En caso de no encontrar un valor a la llave asociado nos devolverá "undefined". Si definimos una llave que no hemos definido, nos dará error.
+            </p>
+
+            <p class="container__text">
+                Para comprobar si se ha asignado un valor a una llave en especifico se utiliza el método <span class="example">.has(llave)</span>, este nos devolverá un <span class="example">boolean</span>, devolverá <span class="example">true</span> si tiene un valor asignado, de lo contrario, devolverá <span class="example">false</span>.
+            </p>
+
+            <p class="container__text">
+                Para eliminar un valor asociado a una llave, usamos el método <span class="example">.delete(llave)</span>, este devolverá un valor <span class="example">boolean</span>, devolverá <span class="example">true</span> en caso de éxito, si no devolverá <span class="example">false</span>.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/weaksetmap.js"></script>
+    
+</body>
+</html>
