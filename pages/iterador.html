@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Iterador</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Iterador</h1>
+        <p class="header__text">
+            En JavaScript, un <span class="example">iterador</span> es un objeto que permite recorrer una colección y devolver un valor al terminar.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <p class="container__text">
+                Cualquier tipo que pueda ser "iterable" desde una cadena de texto, un arreglo, un set, un map, se puede acceder a su <span class="example">iterador</span>. Veamos un ejemplo:
+            </p>
+
+            <pre>
+                <code>
+const numeros = [1,5,9,8,7,6,3,1,7]
+
+const iterador = numeros[Symbol.iterator]()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Creamos primero un <span class="example">array</span> (iterable), y para poder acceder al <span class="example">iterador</span> del "iterable" definimos una variable y la igualamos al mismo "iterable", en este caso, al <span class="example">array</span> que hemos creado, y como si estuviéramos accediendo a una posición del array escribimos: <span class="example">Symbol.iterator</span>, después del corchete, asignamos unos paréntesis para poder terminar de acceder al <span class="example">iterador</span> del "iterable".
+            </p>
+
+            <p class="container__text">
+                Al tener nuestro <span class="example">iterador</span>, podemos invocar al método <span class="example">.next()</span>: 
+            </p>
+
+            <pre>
+                <code>
+console.log(iterador.next())
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Y este método nos devuelve un objeto con dos propiedades llamadas "value" & "done":
+            </p>
+
+            <img src="../assets/img/iterador-1.png" alt="captura resultado ejemplo iterador.next()">
+
+            <p class="container__text">
+                En donde "value" sera el valor de cada posición que almacena el "iterable", y "done", es un valor <span class="example">boolean</span> que nos devuelve <span class="example">false</span> siempre y cuando no hemos llegado al ultimo elemento que estamos iterando, devolverá <span class="example">true</span>, cuando ya estemos en el ultimo elemento del iterable.
+            </p>
+
+            <p class="container__text">
+                Para poder recorrer el "iterable" uno por uno, usaremos un ciclo de la siguiente manera:
+            </p>
+
+            <pre>
+                <code>
+let next = iterador.next()
+
+while(!next.done) {
+    console.log(next.value)
+    next = iterador.next()
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Primero definimos una variable donde guardaremos el objeto que nos devuelve el metodo <span class="example">.next()</span> y asi poder acceder a sus dos propiedades llamadas "value" & "done". 
+            </p>
+
+            <p class="container__text">
+                En este caso, con un bucle <span class="example">while</span>, escribimos la condición que mientras "done" cambie su valor a <span class="example">true</span>, pues se detenga el ciclo. Y solamente mostramos en consola llamando a la propiedad "value" que almacena el valor de cada posición del "iterable".
+            </p>
+
+            <p class="container__text">
+                Por ultimo, volvemos a igualar a <span class="example">iterador.next()</span> a nuestra variable donde almacenamos el objeto que nos devolvía la función <span class="example">.next()</span>.
+            </p>
+
+            <p class="container__text">
+                Y ya tenemos a cada elemento recorrido uno por uno mostrado por consola:
+            </p>
+
+            <img src="../assets/img/iterador-2.png" alt="captura resultado ejemplo iterador">
+
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/iterador.js"></script>
+    
+</body>
+</html>
