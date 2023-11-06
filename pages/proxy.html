@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Proxy</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Proxy</h1>
+        <p class="header__text">
+            El objeto <span class="example">Proxy</span> permite crear un intermediario para otro objeto, el cual puede interceptar y redefinir operaciones fundamentales para dicho objeto.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <div class="container__title">
+                <h2>Creando un nuevo <span class="example__title">Proxy</span></h2>
+            </div>
+
+            <p class="container__text">
+                Para crearlo necesitamos dos cosas, un apuntador o plantilla, y un manejador. El apuntador o conocido como "target" es un objeto con propiedades que nos servirá de plantilla para otro objeto. Y el manejador o conocido como "handler", es aquel que se encarga de asignar los valores según nuestro "target".
+            </p>
+
+            <p class="container__text">
+                Empecemos creando nuestro target:
+            </p>
+
+            <pre>
+                <code>
+const registro = {
+    "nombres": "",
+    "apellidos": "",
+    "edad": 0
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Nuestro target no es mas que un objeto cualquiera, este nos servirá para "respetar" los valores de las propiedades que queremos asignar. Para crearlo solamente definimos un objeto con las propiedades que queremos pero sin asignarles valor, solo dejarlos vacíos.
+            </p>
+
+            <p class="container__text">
+                Ahora crearemos nuestro handler quien se encargara de enlazar o asignar los valores:
+            </p>
+
+            <pre>
+                <code>
+const handler = {
+    set(obj, prop, valor) {
+        obj[prop] = valor
+    }
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Un manejador es un objeto con un método llamado <span class="example">.set(obj, prop, valor)</span> el cual recibe tres parámetros, el objeto al que se hace referencia, la propiedad al cual se le asignara un valor, y el valor que se le asigna a la propiedad.
+            </p>
+
+            <p class="container__text">
+                Una vez creado nuestro target y handler, ya podemos crear nuestro <span class="example">Proxy</span>:
+            </p>
+
+            <pre>
+                <code>
+const usuario1 = new Proxy(registro, handler)
+
+console.log(usuario1)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Lo creamos con su constructor, y este recibe dos parámetros, el target y el handler. Cuando mostramos por consola podemos ver lo siguiente:
+            </p>
+
+            <img src="../assets/img/proxy-1.png" alt="captura resultado ejemplo nuevo proxy">
+
+            <p class="container__text">
+                Podemos observar que tenemos el target y el handler que hemos creado dentro del <span class="example">Proxy</span> que acabamos de crear. Ahora ya podemos asignar valores al <span class="example">Proxy</span> que hemos creado.
+            </p>
+
+            <pre>
+                <code>
+usuario1.nombres = "Leonel Andres"
+usuario1.apellidos = "Messi Cuccitini"
+usuario1.edad = 35
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En el manejador podemos hacer validaciones, ya sea de tipos de datos, expresiones regulares, y una validación que podemos hacer es asignar valores a propiedades que solo se encuentren en el target.
+            </p>
+
+            <pre>
+                <code>
+const handler = {
+    set(obj, prop, valor) {
+
+        // validacion
+        if(Object.keys(obj).indexOf(prop) === -1) {
+            return console.warn("No puedes asignar un valor a una propiedad que no existe.")
+        }
+
+        obj[prop] = valor
+    }
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Las validaciones se hacen dentro del método <span class="example">.set(obj, prop, valor) { ... }</span> asi como el código que te acabo de mostrar. Asi al asignar un valor a una propiedad que no se encuentra dentro del target nos muestre una alerta.
+            </p>
+
+            <pre>
+                <code>
+usuario1.empleo = true
+console.log(usuario1)
+                </code>
+            </pre>
+
+            <img src="../assets/img/proxy-3.png" alt="captura resultado ejemplo validación proxy">
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/proxy.js"></script>
+    
+</body>
+</html>
