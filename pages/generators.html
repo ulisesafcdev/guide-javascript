@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Generadores</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Generadores</h1>
+    </header>
+
+    <main class="main">
+
+        <section class="container">
+            <p class="container__text">
+                Una función generadora, es un tipo especial de función que sirve como una fabrica de iteradores. Cuando se ejecuta, regresa un nuevo objeto Generador. Una función se convierte en una función generadora si utiliza la sintaxis <span class="example">function*</span>
+            </p>
+
+            <p class="container__text">
+                Creando un nuevo generador:
+            </p>
+
+            <pre>
+                <code>
+function* mensajes() {
+    yield "Mensaje #1"
+    console.log("Otro mensaje por separado...")
+    yield "Mensaje #2"
+    yield "Mensaje #3"
+    console.log("Ultimo mensaje por separado...")
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para crear una función generadora, luego de definir la palabra <span class="example">function</span>, justo a la par escribimos un asterisco <span class="example">*</span>, para hacer saber al programa que es una función generadora. Dentro de la función generadora, automáticamente activa un iterador, para ello, usamos la palabra reservada <span class="example">yield</span>, que solamente se puede usar dentro de una función generadora. Al usar esta palabra, llama al método <span class="example">.next()</span> con las dos propiedades llamadas "value" & "done".
+            </p>
+
+            <p class="container__text">
+                <span class="example">yield</span> nos permite pausar y reanudar algo iterable. Una vez definido que es lo que vamos a iterar dentro de la función generadora, veamos como podemos mostrarlo en consola con un bucle:
+            </p>
+
+            <pre>
+                <code>
+let iterador = mensajes()
+
+for (const i of iterador) {
+    console.log(i)
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En una variable almacenamos la función generadora, es decir, al ser una función generadora, lo que almacenamos en la variable es el iterador. Dentro del bucle automáticamente se muestran los mensajes de la función.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/generators.js"></script>
+    
+</body>
+</html>
