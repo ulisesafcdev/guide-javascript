@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Propiedades Dinámicas de Objetos</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Propiedades dinámicas de los objetos</h1>
+    </header>
+
+    <main class="main">
+        <section class="container">
+            <p class="container__text">
+                Hay una manera de crear propiedades dinamicamente en objetos, por ejemplo, si queremos crear una propiedad que identifique a cada usuario, veamos un ejemplo pequeño para ponerlo en practica:
+            </p>
+
+            <p class="container__text">
+                Primero creemos un <span class="example">array</span> con nombres y luego un objeto vacío.
+            </p>
+
+            <pre>
+                <code>
+let usuarios = ["ulises", "juan", "mario", "oscar", "kevin", "luis", "melvin", "carlos", "toño", "messi"]
+
+let objUser = { }
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Para definir una propiedad que sea dinámica, nos basaremos en el <span class="example">array</span> con los nombres almacenados. Crearemos una propiedad llamada "id_" seguido del numero del indice del registro, y su valor sera pues el valor de cada indice del <span class="example">array</span>.
+            </p>
+
+            <pre>
+                <code>
+usuarios.forEach((user, index) => {
+    objUser[`id_${index}`] = user
+})
+
+console.log(objUser)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Primero, con un bucle recorremos el <span class="example">array</span> de datos, de este <span class="example">array</span> sacaremos su valor y su indice. Segundo, ya que tenemos el objeto vacío, para crear una propiedad se puede hacer llamando al objeto directamente y asignar un valor, pero, en este caso haremos una propiedad dinámica, y para crearla hacemos uso del corchete. Lo que estamos haciendo es que por cada valor del <span class="example">array</span> se genero una propiedad llamada "id_0", "id_1", "id_2" ... y asi sucesivamente, y su valor sera pues el nombre de cada elemento del <span class="example">array</span>.
+            </p>
+        </section>
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/propiedades-dinamicas.js"></script>
+    
+</body>
+</html>
