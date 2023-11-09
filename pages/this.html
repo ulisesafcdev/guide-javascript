@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>This</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">#this</h1>
+        <p class="header__text">
+            La palabra clave <span class="example">this</span> de una función se comporta un poco diferente en JavaScript en comparación con otros lenguajes. Ademas tiene algunas diferencias entre el modo estricto y el modo no estricto.
+        </p>
+    </header>
+
+    <main class="main">
+        <section class="container">
+
+            <p class="container__text">
+                En general, el valor de <span class="example">this</span> esta determinado por como se invoca a la función. No puede ser establecida mediante una asignación en tiempo de ejecución, y puede ser diferente cada vez que la función es invocada. ES5 introdujo el método <span class="example">bind()</span> para establecer el valor de la función <span class="example">this</span> independientemente de como es llamada, y ES2015 introdujo las funciones flecha que no proporcionan su propio "binding" de <span class="example">this</span> (se mantiene el valor de <span class="example">this</span> del contexto léxico que envuelve a la función).
+            </p>
+
+            <p class="container__text">
+                <span class="example">this</span> hace referencia al objeto global del navegador llamado <span class="example">window</span>. Crearemos una variable que cuelga del objeto global del navegador de la siguiente manera:
+            </p>
+
+            <pre>
+                <code>
+this.miVariable = "odiseodev"
+
+console.log(this)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Hemos creado una variable llamada "miVariable" con el valor de "odiseodev", mostremos por consola a <span class="example">this</span> para poder ver la variable que hemos creado:
+            </p>
+
+            <img src="../assets/img/this-1.png" alt="captura resultado ejemplo this variable">
+
+            <p class="container__text">
+                Crearemos una función que nos imprima por consola la variable que creamos en el objeto global del navegador.
+            </p>
+
+            <pre>
+                <code>
+function imprimir() {
+    console.log(this.miVariable)
+}
+
+imprimir() // nos devuelve el valor de la variable
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Ahora veamos como se comporta <span class="example">this</span> cuando hacemos lo mismo pero en otro ámbito, dentro de un objeto:
+            </p>
+
+            <pre>
+                <code>
+let obj = {
+    miVariable: "messi",
+    imprimir: function() {
+        console.log(this.miVariable)
+    }
+}
+
+obj.imprimir()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Dentro del objeto creamos una propiedad con el mismo nombre de la variable que creamos para el objeto global del navegador, dentro definimos una función el cual nos imprima el valor de esa propiedad por consola por medio de <span class="example">this</span>, por ultimo, llamamos al objeto e invocamos la función para mostrar por consola el resultado, y veamos cual es el valor que nos muestra:
+            </p>
+
+            <img src="../assets/img/this-2.png" alt="captura resultado ejemplo this objeto">
+
+            <p class="container__text">
+                Observamos que <span class="example">this</span> nos devuelve el valor de la propiedad del objeto. Es decir, <span class="example">this</span> hace referencia al contexto de donde se llama la función. Al estar dentro del objeto, <span class="example">this</span> hace referencia a la propiedad llamada "miVariable", por ende, no imprime el valor de la variable del objeto global que definimos, si no que, hace referencia al contexto donde se encuentra. En este ejemplo <span class="example">this</span> es ligado al objeto y no al contexto global.
+            </p>
+
+            <p class="container__text">
+                Y lo mismo sucede si creamos otro objeto y hacemos lo mismo:
+            </p>
+
+            <pre>
+                <code>
+let obj2 = {
+    miVariable: "cr7",
+    imprimir
+}
+
+obj2.imprimir()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                El valor que se imprimirá sera "cr7", por que <span class="example">this</span> esta ligado al objeto.
+            </p>
+
+            <article>
+                <p>
+                    <strong>Nota:</strong> Cuando estamos trabajando en la creación de un objeto y dentro de este objeto hay propiedades y métodos que van interactuar entre ellos dentro del objeto literal, se recomienda usar funciones anónimas, ya que las <span class="example">arrow function</span> no crean un "scope".
+                </p>
+            </article>
+
+            <p class="container__text">
+                Teniendo en cuenta el concepto anterior, veamos otro ejemplo con una función constructora que retorna una función:
+            </p>
+
+            <pre>
+                <code>
+function Usuario(miVariable) {
+    this.miVariable = miVariable
+
+    return console.log(this.miVariable)
+}
+
+let odiseo = new Usuario("Odiseo")
+odiseo
+                </code>
+            </pre>
+
+            <p class="container__text">
+                En este ejemplo, retornamos un simple <span class="example">console.log(this.miVariable)</span> teniendo como resultado el valor que se le asigno al constructor:
+            </p>
+
+            <img src="../assets/img/this-4.png" alt="captura resultado ejemplo this function constructora">
+
+            <p class="container__text">
+                Pero que pasa si retornamos una función, editemos el código y retornemos una función anónima:
+            </p>
+
+            <pre>
+                <code>
+function Usuario(miVariable) {
+    this.miVariable = miVariable
+
+    // return console.log(this.miVariable)
+    return function () {
+        console.log(this.miVariable)
+    }
+}
+
+let odiseo = new Usuario("Odiseo")
+// odiseo
+odiseo()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Ahora veamos el resultado:
+            </p>
+
+            <img src="../assets/img/this-5.png" alt="captura resultado ejemplo this function constructora 2">
+
+            <p class="container__text">
+                Nos devuelve el valor de la variable que creamos directamente al objeto global del navegador. Y esto se debe a que estamos retornando una función, por ende, esta función que se esta retornando tiene su propio "scope".
+            </p>
+
+            <p class="container__text">
+                Para solucionar esto, recordemos en la nota anterior que, las <span class="example">arrow function</span> no crean un scope, en este tipo de casos <strong>SI</strong> conviene usar una <span class="example">arrow function</span> como valor de retorno de la función constructora.
+            </p>
+
+            <pre>
+                <code>
+function Usuario(miVariable) {
+    this.miVariable = miVariable
+
+    // return console.log(this.miVariable)
+    
+    /* return function () {
+        console.log(this.miVariable)
+    } */
+
+    return () => console.log(this.miVariable)
+}
+
+let odiseo = new Usuario("Odiseo")
+// odiseo
+// odiseo()
+odiseo()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Ya con esta solución podemos ver de nuevo el valor que le pasamos al constructor:
+            </p>
+
+            <img src="../assets/img/this-6.png" alt="captura resultado ejemplo this function constructora 3">
+
+            <article>
+                <p>
+                    Para poder solucionar este tipo de casos, tenemos palabras reservadas llamadas <span class="example">call</span>, <span class="example">apply</span> & <span class="example">bind</span>. El cual veremos en el siguiente capitulo.
+                </p>
+            </article>
+
+        </section>
+
+
+        <section class="container">
+            <a href="../index.html" class="container__link">Volver a inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creado por <a class="footer__link" href="https://github.com/ulisesafcdev" target="_blank">@ulisesafcdev</a> 2023.</p>
+    </footer>
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/this.js"></script>
+    
+</body>
+</html>
