@@ -116,7 +116,7 @@ article {
 .example__title {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: #5e56b681;
-    padding: 2px 5px;
+    padding: 1px 5px;
     border-radius: 4px;
     letter-spacing: 1px;
 }
@@ -125,14 +125,16 @@ article {
     font-size: 0.8rem;
 }
 
+.example__title {
+    font-size: 1.2rem;
+}
+
 .example > a {
     color: #f5f5f5;
     text-decoration: none;
 }
 
 .example__title {
-    /* font-size: 0.8em; */
-    padding: .25rem;
     color: #f5f5f5;
     font-weight: normal;
 }
