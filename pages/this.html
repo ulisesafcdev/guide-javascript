@@ -200,6 +200,159 @@ odiseo()
 
         </section>
 
+        <section class="container">
+            <div class="container__title">
+                <h2>Método <span class="example__title">call</span> & Método <span class="example__title">apply</span></h2>
+            </div>
+
+            <p class="container__text">
+                Ambos métodos son idénticos y nos permiten enlazar a que contexto queremos asociar el <span class="example">this</span>. Para entender mejor estos métodos veremos un ejemplo paso a paso.
+            </p>
+
+            <pre>
+                <code>
+this.lugar = "Contexto global."
+
+function saludar() {
+    console.log(this.lugar)
+}
+
+saludar()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Primero, en el código anterior creamos una variable llamada "lugar" que cuelgue del objeto global del navegador llamado <span class="example">window</span>, para eso usamos <span class="example">this</span>, el valor de esta variable es "contexto global". Seguido creamos una función llamada <span class="example">saludar()</span> el cual nos mostrara el valor de la variable llamada "lugar" por medio de <span class="example">this</span>. Al invocar esta función nos mostrara el mensaje "Contexto global.".
+            </p>
+
+            <p class="container__text">
+                Continuemos con el siguiente paso:
+            </p>
+
+            <pre>
+                <code>
+let miObj = {
+    lugar: "Contexto objeto."
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Continuando, creamos un objeto llamado "miObj", con una propiedad llamada "lugar" (el mismo nombre de la variable que creamos con <span class="example">this</span> ), pero, su valor sera "Contexto objeto.".
+            </p>
+
+            <p class="container__text">
+                Ahora, ya vimos como se comporta <span class="example">this</span> según en el contexto del cual se invoca. Teniendo en cuenta eso, ¿como podríamos hacer para que la función "saludar" se encuentre en el contexto del que queremos asociar? Para eso nos servirán los métodos <span class="example">call</span> & <span class="example">apply</span>.
+            </p>
+
+            <p class="container__text">
+                Continuemos, utilizando los métodos <span class="example">call</span> & <span class="example">apply</span>:
+            </p>
+
+            <pre>
+                <code>
+saludar.call(miObj)
+saludar.apply(miObj)
+                </code>
+            </pre>
+
+            <p class="container__text">
+                El método <span class="example">saludar()</span> (pero sin los paréntesis) seguido de la notación del punto invocamos al método <span class="example">call</span> & <span class="example">apply</span>, ambos métodos recibe como parámetro principal el objeto al que queremos que se enlace la función "saludar". Al hacerlos, vemos en consola que ya nos muestra el valor de "lugar" según el contexto donde se encuentre, en este caso nos devuelve "Contexto objeto" gracias a que hemos enlazado la función "saludar" al objeto "miObj".
+            </p>
+
+            <p class="container__text">
+                A simple vista no se nota diferencia entre el uno y el otro, pero, ambos métodos reciben mas parámetros, es decir, ambos métodos cambian la forma en que reciben los demás parámetros, veamos como podría ser:
+            </p>
+
+            <pre>
+                <code>
+function saludar(texto) {
+    console.log(`${this.lugar} y el parametro es: ${texto}`)
+}
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Podemos observar que hemos modificado la función "saludar", hemos agregado a la función que reciba un parámetro, y en el mensaje que mostramos por consola se agregue al valor de <span class="example">this</span> el valor del parámetro que le vayamos a pasar por medio de la función "saludar".
+            </p>
+
+            <p class="container__text">
+                Veamos como recibe los parámetros cada método <span class="example">call</span> & <span class="example">apply</span>:
+            </p>
+
+            <pre>
+                <code>
+saludar.call(miObj, "parametro desde el metodo call.")
+saludar.apply(miObj, ["parametro desde el metodo apply."])
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Observando el código, notamos que la manera en que recibe los parámetros el método <span class="example">call</span>, es en cadena de textos separados por una coma. Y en el método <span class="example">apply</span> recibe los parámetros dentro de un <span class="example">array</span>.
+            </p>
+
+            <p class="container__text">
+                Hasta aquí podemos ver como es el comportamiento de ambos métodos, su manera de recibir parámetros y en que casos nos convendría usar ambos métodos. Veremos a continuación el siguiente método llamado <span class="example">bind</span>.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="container__title">
+                <h2>Método <span class="example__title">bind</span></h2>
+            </div>
+
+            <p class="container__text">
+                Para entender como se comporta el método <span class="example">bind</span> veamos un ejemplo paso a paso, empecemos:
+            </p>
+
+            <pre>
+                <code>
+let club = {
+    nombre: "FC Barcelona",
+    imprimir: function () {
+        console.log(this.nombre)
+    }
+}
+
+club.imprimir()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Creamos un objeto llamado "club", dentro tenemos una propiedad llamada "nombre" y una función llamada "imprimir" que se encarga de mostrar el valor de <span class="example">this.nombre</span>.
+            </p>
+
+            <p class="container__text">
+                Al invocar el método "imprimir" del objeto "club", nos muestra en consola el valor de "FC Barcelona".
+            </p>
+
+            <p class="container__text">
+                Continuemos con el ejemplo:
+            </p>
+
+            <pre>
+                <code>
+let liga = {
+    nombreliga: "liga espaniola",
+    imprimir: club.imprimir.bind(club)
+}
+
+liga.imprimir()
+                </code>
+            </pre>
+
+            <p class="container__text">
+                Creamos otro método llamado "liga" con una propiedad llamada "nombreliga" y una función llamada "imprimir" (mismo nombre igual al otro objeto). Ahora bien, veremos como podemos usar el método <span class="example">bind</span>. Ya sabemos que <span class="example">this</span> nos devuelve el valor según el contexto de donde se invoque o donde se encuentre, en este ejemplo queremos que el objeto "club" con el valor de la propiedad "nombre", se vincule al objeto llamado "liga", por ende, queremos que nos muestre el valor "FC Barcelona" al invocar la función "imprimir" desde el objeto llamado "liga". Para hacer esto posible se utiliza el método <span class="example">bind</span>, que nos vincula el contexto de un objeto en otro.
+            </p>
+
+            <p class="container__text">
+                Es por eso que en "imprimir" del objeto "liga" escribimos <span class="example">club.imprimir.bind(club)</span>, en pocas palabras, del objeto "club" invocamos a su método "imprimir" (el cual nos muestra el valor de <span class="example">this</span>) seguido de la notación del punto, invocando al método <span class="example">bind</span>, el cual este recibe un parámetro indicando el objeto del cual proviene el contexto que queremos.
+            </p>
+
+            <p class="container__text">
+                Teniendo como resultado el valor del objeto "club" al invocar al método imprimir con el contexto del objeto de donde pertenece, es asi como podemos vincular el contexto de <span class="example">this</span> en otro objeto.
+            </p>
+        </section>
 
         <section class="container">
             <a href="../index.html" class="container__link">Volver a inicio</a>
