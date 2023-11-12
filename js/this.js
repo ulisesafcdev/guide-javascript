@@ -3,7 +3,7 @@ console.log(window)
 console.log(this === window)
 
 */
-this.miVariable = "odiseodev"
+// this.miVariable = "odiseodev"
 // console.log(this)
 
 /* function imprimir() {
@@ -31,7 +31,7 @@ obj2.imprimir()
 
 console.log(`///////////////////////////`) */
 
-function Usuario(miVariable) {
+/* function Usuario(miVariable) {
     this.miVariable = miVariable
 
     // return console.log(this.miVariable)
@@ -40,10 +40,46 @@ function Usuario(miVariable) {
         console.log(this.miVariable)
     } */
 
-    return () => console.log(this.miVariable)
-}
+    /* return () => console.log(this.miVariable)
+} */
 
-let odiseo = new Usuario("Odiseo")
+// let odiseo = new Usuario("Odiseo")
 // odiseo
 // odiseo()
-odiseo()
+// odiseo()
+
+
+console.log(this)
+
+this.lugar = "Contexto global."
+
+function saludar(texto) {
+    console.log(`${this.lugar} y el parametro es: ${texto}`)
+}
+
+// saludar()
+
+let miObj = {
+    lugar: "Contexto objeto."
+}
+
+saludar.call(miObj, "parametro desde el metodo call.")
+saludar.apply(miObj, ["parametro desde el metodo apply."])
+
+/* //////////////////////////////////////////////////////// */
+
+let club = {
+    nombre: "FC Barcelona",
+    imprimir: function () {
+        console.log(this.nombre)
+    }
+}
+
+club.imprimir()
+
+let liga = {
+    nombreliga: "liga espaniola",
+    imprimir: club.imprimir.bind(club)
+}
+
+liga.imprimir()
